@@ -1,0 +1,942 @@
+[
+  {
+    "postcode": "3047",
+    "areaName": "Hume (C) - Broadmeadows",
+    "safeRate": 88.5
+  },
+  {
+    "postcode": "3064",
+    "areaName": "Hume (C) - Craigieburn",
+    "safeRate": 92.8
+  },
+  {
+    "postcode": "3429",
+    "areaName": "Hume (C) - Sunbury",
+    "safeRate": 98.6
+  },
+  {
+    "postcode": "3761",
+    "areaName": "Nillumbik (S) - South",
+    "safeRate": 98.4
+  },
+  {
+    "postcode": "3761",
+    "areaName": "Nillumbik (S) - South-West",
+    "safeRate": 98.9
+  },
+  {
+    "postcode": "3761",
+    "areaName": "Nillumbik (S) Bal",
+    "safeRate": 98.7
+  },
+  {
+    "postcode": "3757",
+    "areaName": "Whittlesea (C) - North",
+    "safeRate": 92.9
+  },
+  {
+    "postcode": "3757",
+    "areaName": "Whittlesea (C) - South-East",
+    "safeRate": 97.2
+  },
+  {
+    "postcode": "3757",
+    "areaName": "Whittlesea (C) - South-West",
+    "safeRate": 91.5
+  },
+  {
+    "postcode": "3799",
+    "areaName": "Yarra Ranges (S) - North",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3139",
+    "areaName": "Yarra Ranges (S) - Seville",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3186",
+    "areaName": "Bayside (C) - Brighton",
+    "safeRate": 99.6
+  },
+  {
+    "postcode": "3188",
+    "areaName": "Bayside (C) - South",
+    "safeRate": 97.6
+  },
+  {
+    "postcode": "3031",
+    "areaName": "Melbourne (C) - Inner",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3931",
+    "areaName": "Mornington P'sula (S) - South",
+    "safeRate": 99.1
+  },
+  {
+    "postcode": "3006",
+    "areaName": "Melbourne (C) - S'bank-D'lands",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3941",
+    "areaName": "Melbourne (C) - Remainder",
+    "safeRate": 98.8
+  },
+  {
+    "postcode": "3140",
+    "areaName": "Yarra Ranges (S) - Lilydale",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3561",
+    "areaName": "Campaspe (S) - Rochester",
+    "safeRate": 99.2
+  },
+  {
+    "postcode": "3199",
+    "areaName": "Frankston (C) - East",
+    "safeRate": 94.1
+  },
+  {
+    "postcode": "3199",
+    "areaName": "Frankston (C) - West",
+    "safeRate": 97.6
+  },
+  {
+    "postcode": "3931",
+    "areaName": "Mornington P'sula (S) - East",
+    "safeRate": 98.0
+  },
+  {
+    "postcode": "3300",
+    "areaName": "S. Grampians (S) - Hamilton",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3314",
+    "areaName": "S. Grampians (S) - Wannon",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3314",
+    "areaName": "S. Grampians (S) Bal",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3182",
+    "areaName": "Port Phillip (C) - St Kilda",
+    "safeRate": 96.3
+  },
+  {
+    "postcode": "3910",
+    "areaName": "Mornington P'sula (S) - West",
+    "safeRate": 99.3
+  },
+  {
+    "postcode": "3223",
+    "areaName": "Bellarine - Inner",
+    "safeRate": 99.5
+  },
+  {
+    "postcode": "3214",
+    "areaName": "Corio - Inner",
+    "safeRate": 98.0
+  },
+  {
+    "postcode": "3206",
+    "areaName": "Port Phillip (C) - West",
+    "safeRate": 99.8
+  },
+  {
+    "postcode": "3241",
+    "areaName": "Surf Coast (S) - East",
+    "safeRate": 99.7
+  },
+  {
+    "postcode": "3241",
+    "areaName": "Surf Coast (S) - West",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3072",
+    "areaName": "Darebin (C) - Preston",
+    "safeRate": 94.8
+  },
+  {
+    "postcode": "3419",
+    "areaName": "West Wimmera (S)",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3181",
+    "areaName": "Stonnington (C) - Prahran",
+    "safeRate": 95.4
+  },
+  {
+    "postcode": "3085",
+    "areaName": "Yarra (C) - North",
+    "safeRate": 92.6
+  },
+  {
+    "postcode": "3121",
+    "areaName": "Yarra (C) - Richmond",
+    "safeRate": 94.4
+  },
+  {
+    "postcode": "3036",
+    "areaName": "Brimbank (C) - Keilor",
+    "safeRate": 91.4
+  },
+  {
+    "postcode": "3020",
+    "areaName": "Brimbank (C) - Sunshine",
+    "safeRate": 87.5
+  },
+  {
+    "postcode": "3018",
+    "areaName": "Hobsons Bay (C) - Altona",
+    "safeRate": 93.8
+  },
+  {
+    "postcode": "3016",
+    "areaName": "Hobsons Bay (C) - Williamstown",
+    "safeRate": 99.7
+  },
+  {
+    "postcode": "3011",
+    "areaName": "Maribyrnong (C)",
+    "safeRate": 95.5
+  },
+  {
+    "postcode": "3040",
+    "areaName": "Moonee Valley (C) - Essendon",
+    "safeRate": 97.1
+  },
+  {
+    "postcode": "3039",
+    "areaName": "Moonee Valley (C) - West",
+    "safeRate": 97.4
+  },
+  {
+    "postcode": "3395",
+    "areaName": "Yarriambiack (S) - South",
+    "safeRate": 99.0
+  },
+  {
+    "postcode": "3500",
+    "areaName": "Mildura (RC) - Pt A",
+    "safeRate": 96.9
+  },
+  {
+    "postcode": "3527",
+    "areaName": "Buloke (S) - North",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3527",
+    "areaName": "Buloke (S) - South",
+    "safeRate": 99.1
+  },
+  {
+    "postcode": "3525",
+    "areaName": "Mildura (RC) - Pt B",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3579",
+    "areaName": "Gannawarra (S)",
+    "safeRate": 99.4
+  },
+  {
+    "postcode": "3646",
+    "areaName": "Gr. Shepparton (C) - Pt A",
+    "safeRate": 96.9
+  },
+  {
+    "postcode": "3844",
+    "areaName": "Latrobe (C) - Traralgon",
+    "safeRate": 92.6
+  },
+  {
+    "postcode": "3335",
+    "areaName": "Melton (S) - East",
+    "safeRate": 97.0
+  },
+  {
+    "postcode": "3337",
+    "areaName": "Melton (S) Bal",
+    "safeRate": 94.9
+  },
+  {
+    "postcode": "3029",
+    "areaName": "Wyndham (C) - North",
+    "safeRate": 96.5
+  },
+  {
+    "postcode": "3030",
+    "areaName": "Wyndham (C) - South",
+    "safeRate": 93.1
+  },
+  {
+    "postcode": "3030",
+    "areaName": "Wyndham (C) - West",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3225",
+    "areaName": "Queenscliffe (B)",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3056",
+    "areaName": "Moreland (C) - Brunswick",
+    "safeRate": 97.1
+  },
+  {
+    "postcode": "3058",
+    "areaName": "Moreland (C) - Coburg",
+    "safeRate": 94.9
+  },
+  {
+    "postcode": "3044",
+    "areaName": "Moreland (C) - North",
+    "safeRate": 97.9
+  },
+  {
+    "postcode": "3084",
+    "areaName": "Banyule (C) - Heidelberg",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3085",
+    "areaName": "Banyule (C) - North",
+    "safeRate": 98.3
+  },
+  {
+    "postcode": "3070",
+    "areaName": "Darebin (C) - Northcote",
+    "safeRate": 97.6
+  },
+  {
+    "postcode": "3124",
+    "areaName": "Boroondara (C) - Camberwell N.",
+    "safeRate": 98.1
+  },
+  {
+    "postcode": "3124",
+    "areaName": "Boroondara (C) - Camberwell S.",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3122",
+    "areaName": "Boroondara (C) - Hawthorn",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3101",
+    "areaName": "Boroondara (C) - Kew",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3106",
+    "areaName": "Manningham (C) - East",
+    "safeRate": 94.5
+  },
+  {
+    "postcode": "3106",
+    "areaName": "Manningham (C) - West",
+    "safeRate": 97.9
+  },
+  {
+    "postcode": "3168",
+    "areaName": "Monash (C) - South-West",
+    "safeRate": 95.7
+  },
+  {
+    "postcode": "3149",
+    "areaName": "Monash (C) - Waverley East",
+    "safeRate": 99.2
+  },
+  {
+    "postcode": "3451",
+    "areaName": "Mount Alexander (S) - C'maine",
+    "safeRate": 99.3
+  },
+  {
+    "postcode": "3451",
+    "areaName": "Mount Alexander (S) Bal",
+    "safeRate": 99.2
+  },
+  {
+    "postcode": "3444",
+    "areaName": "Macedon Ranges (S) - Kyneton",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3434",
+    "areaName": "Macedon Ranges (S) - Romsey",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3434",
+    "areaName": "Macedon Ranges (S) Bal",
+    "safeRate": 99.0
+  },
+  {
+    "postcode": "3150",
+    "areaName": "Monash (C) - Waverley West",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3128",
+    "areaName": "Whitehorse (C) - Box Hill",
+    "safeRate": 98.7
+  },
+  {
+    "postcode": "3131",
+    "areaName": "Whitehorse (C) - Nunawading E.",
+    "safeRate": 95.8
+  },
+  {
+    "postcode": "3131",
+    "areaName": "Whitehorse (C) - Nunawading W.",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3152",
+    "areaName": "Knox (C) - North-East",
+    "safeRate": 97.9
+  },
+  {
+    "postcode": "3152",
+    "areaName": "Knox (C) - North-West",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3152",
+    "areaName": "Knox (C) - South",
+    "safeRate": 98.0
+  },
+  {
+    "postcode": "3136",
+    "areaName": "Maroondah (C) - Croydon",
+    "safeRate": 98.3
+  },
+  {
+    "postcode": "3134",
+    "areaName": "Maroondah (C) - Ringwood",
+    "safeRate": 96.6
+  },
+  {
+    "postcode": "3799",
+    "areaName": "Yarra Ranges (S) - Central",
+    "safeRate": 98.0
+  },
+  {
+    "postcode": "3793",
+    "areaName": "Yarra Ranges (S) - Dandenongs",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3162",
+    "areaName": "Glen Eira (C) - Caulfield",
+    "safeRate": 98.8
+  },
+  {
+    "postcode": "3564",
+    "areaName": "Campaspe (S) - Echuca",
+    "safeRate": 94.3
+  },
+  {
+    "postcode": "3620",
+    "areaName": "Campaspe (S) - Kyabram",
+    "safeRate": 98.3
+  },
+  {
+    "postcode": "3204",
+    "areaName": "Glen Eira (C) - South",
+    "safeRate": 97.8
+  },
+  {
+    "postcode": "3195",
+    "areaName": "Kingston (C) - North",
+    "safeRate": 96.4
+  },
+  {
+    "postcode": "3195",
+    "areaName": "Kingston (C) - South",
+    "safeRate": 96.9
+  },
+  {
+    "postcode": "3144",
+    "areaName": "Stonnington (C) - Malvern",
+    "safeRate": 98.3
+  },
+  {
+    "postcode": "3175",
+    "areaName": "Gr. Dandenong (C) - Dandenong",
+    "safeRate": 91.2
+  },
+  {
+    "postcode": "3175",
+    "areaName": "Gr. Dandenong (C) Bal",
+    "safeRate": 93.4
+  },
+  {
+    "postcode": "3812",
+    "areaName": "Cardinia (S) - North",
+    "safeRate": 99.3
+  },
+  {
+    "postcode": "3810",
+    "areaName": "Cardinia (S) - Pakenham",
+    "safeRate": 96.8
+  },
+  {
+    "postcode": "3812",
+    "areaName": "Cardinia (S) - South",
+    "safeRate": 95.3
+  },
+  {
+    "postcode": "3806",
+    "areaName": "Casey (C) - Berwick",
+    "safeRate": 98.5
+  },
+  {
+    "postcode": "3561",
+    "areaName": "Campaspe (S) - South",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3666",
+    "areaName": "Gr. Shepparton (C) - Pt B West",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3188",
+    "areaName": "Moira (S) - East",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3188",
+    "areaName": "Moira (S) - West",
+    "safeRate": 99.2
+  },
+  {
+    "postcode": "3672",
+    "areaName": "Benalla (RC) - Benalla",
+    "safeRate": 99.7
+  },
+  {
+    "postcode": "3672",
+    "areaName": "Benalla (RC) Bal",
+    "safeRate": 98.7
+  },
+  {
+    "postcode": "3722",
+    "areaName": "Mansfield (S)",
+    "safeRate": 97.8
+  },
+  {
+    "postcode": "3665",
+    "areaName": "Strathbogie (S)",
+    "safeRate": 98.4
+  },
+  {
+    "postcode": "3352",
+    "areaName": "Mitchell (S) - North",
+    "safeRate": 94.3
+  },
+  {
+    "postcode": "3352",
+    "areaName": "Mitchell (S) - South",
+    "safeRate": 97.9
+  },
+  {
+    "postcode": "3714",
+    "areaName": "Murrindindi (S) - East",
+    "safeRate": 99.0
+  },
+  {
+    "postcode": "3717",
+    "areaName": "Murrindindi (S) - West",
+    "safeRate": 95.9
+  },
+  {
+    "postcode": "3687",
+    "areaName": "Indigo (S) - Pt A",
+    "safeRate": 99.3
+  },
+  {
+    "postcode": "3707",
+    "areaName": "Towong (S) - Pt A",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3690",
+    "areaName": "Wodonga (RC)",
+    "safeRate": 98.7
+  },
+  {
+    "postcode": "3687",
+    "areaName": "Indigo (S) - Pt B",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3677",
+    "areaName": "Wangaratta (RC) - Central",
+    "safeRate": 99.6
+  },
+  {
+    "postcode": "3678",
+    "areaName": "Wangaratta (RC) - North",
+    "safeRate": 98.7
+  },
+  {
+    "postcode": "3678",
+    "areaName": "Wangaratta (RC) - South",
+    "safeRate": 99.3
+  },
+  {
+    "postcode": "3741",
+    "areaName": "Alpine (S) - East",
+    "safeRate": 99.1
+  },
+  {
+    "postcode": "3741",
+    "areaName": "Alpine (S) - West",
+    "safeRate": 99.2
+  },
+  {
+    "postcode": "3977",
+    "areaName": "Casey (C) - Cranbourne",
+    "safeRate": 90.5
+  },
+  {
+    "postcode": "3707",
+    "areaName": "Towong (S) - Pt B",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3803",
+    "areaName": "Casey (C) - Hallam",
+    "safeRate": 94.9
+  },
+  {
+    "postcode": "3977",
+    "areaName": "Casey (C) - South",
+    "safeRate": 97.4
+  },
+  {
+    "postcode": "3220",
+    "areaName": "Geelong",
+    "safeRate": 92.7
+  },
+  {
+    "postcode": "3218",
+    "areaName": "Geelong West",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3351",
+    "areaName": "Newtown",
+    "safeRate": 99.2
+  },
+  {
+    "postcode": "3227",
+    "areaName": "South Barwon - Inner",
+    "safeRate": 98.8
+  },
+  {
+    "postcode": "3211",
+    "areaName": "Greater Geelong (C) - Pt B",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3250",
+    "areaName": "Colac-Otway (S) - Colac",
+    "safeRate": 99.2
+  },
+  {
+    "postcode": "3249",
+    "areaName": "Colac-Otway (S) - North",
+    "safeRate": 97.8
+  },
+  {
+    "postcode": "3249",
+    "areaName": "Colac-Otway (S) - South",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3330",
+    "areaName": "Golden Plains (S) - North-West",
+    "safeRate": 96.7
+  },
+  {
+    "postcode": "3330",
+    "areaName": "Golden Plains (S) - South-East",
+    "safeRate": 98.6
+  },
+  {
+    "postcode": "3280",
+    "areaName": "Warrnambool (C)",
+    "safeRate": 98.5
+  },
+  {
+    "postcode": "3260",
+    "areaName": "Corangamite (S) - North",
+    "safeRate": 99.5
+  },
+  {
+    "postcode": "3260",
+    "areaName": "Corangamite (S) - South",
+    "safeRate": 97.9
+  },
+  {
+    "postcode": "3276",
+    "areaName": "Moyne (S) - North-East",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3276",
+    "areaName": "Moyne (S) - North-West",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3276",
+    "areaName": "Moyne (S) - South",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3128",
+    "areaName": "Baw Baw (S) - Pt B East",
+    "safeRate": 94.4
+  },
+  {
+    "postcode": "3820",
+    "areaName": "Baw Baw (S) - Pt B West",
+    "safeRate": 98.8
+  },
+  {
+    "postcode": "3922",
+    "areaName": "Bass Coast (S) - Phillip Is.",
+    "safeRate": 99.4
+  },
+  {
+    "postcode": "3995",
+    "areaName": "Bass Coast (S) Bal",
+    "safeRate": 98.1
+  },
+  {
+    "postcode": "3875",
+    "areaName": "South Gippsland (S) - Central",
+    "safeRate": 98.7
+  },
+  {
+    "postcode": "3875",
+    "areaName": "South Gippsland (S) - East",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3875",
+    "areaName": "South Gippsland (S) - West",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3304",
+    "areaName": "Glenelg (S) - Heywood",
+    "safeRate": 97.8
+  },
+  {
+    "postcode": "3305",
+    "areaName": "Glenelg (S) - North",
+    "safeRate": 98.3
+  },
+  {
+    "postcode": "3305",
+    "areaName": "Glenelg (S) - Portland",
+    "safeRate": 98.7
+  },
+  {
+    "postcode": "3350",
+    "areaName": "Ballarat (C) - Central",
+    "safeRate": 96.6
+  },
+  {
+    "postcode": "3355",
+    "areaName": "Ballarat (C) - Inner North",
+    "safeRate": 95.8
+  },
+  {
+    "postcode": "3350",
+    "areaName": "Ballarat (C) - South",
+    "safeRate": 98.3
+  },
+  {
+    "postcode": "3461",
+    "areaName": "Hepburn (S) - East",
+    "safeRate": 98.3
+  },
+  {
+    "postcode": "3461",
+    "areaName": "Hepburn (S) - West",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3340",
+    "areaName": "Moorabool (S) - Bacchus Marsh",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3342",
+    "areaName": "Moorabool (S) - Ballan",
+    "safeRate": 97.5
+  },
+  {
+    "postcode": "3342",
+    "areaName": "Moorabool (S) - West",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3377",
+    "areaName": "Ararat (RC)",
+    "safeRate": 98.8
+  },
+  {
+    "postcode": "3400",
+    "areaName": "Horsham (RC) - Central",
+    "safeRate": 97.8
+  },
+  {
+    "postcode": "3400",
+    "areaName": "Horsham (RC) Bal",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3478",
+    "areaName": "N. Grampians (S) - St Arnaud",
+    "safeRate": 99.0
+  },
+  {
+    "postcode": "3380",
+    "areaName": "N. Grampians (S) - Stawell",
+    "safeRate": 99.8
+  },
+  {
+    "postcode": "3585",
+    "areaName": "Swan Hill (RC) - Central",
+    "safeRate": 98.1
+  },
+  {
+    "postcode": "3549",
+    "areaName": "Swan Hill (RC) - Robinvale",
+    "safeRate": 88.4
+  },
+  {
+    "postcode": "3585",
+    "areaName": "Swan Hill (RC) Bal",
+    "safeRate": 98.2
+  },
+  {
+    "postcode": "3338",
+    "areaName": "Gr. Bendigo (C) - Central",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3550",
+    "areaName": "Gr. Bendigo (C) - Eaglehawk",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3338",
+    "areaName": "Gr. Bendigo (C) - Inner East",
+    "safeRate": 99.4
+  },
+  {
+    "postcode": "3338",
+    "areaName": "Gr. Bendigo (C) - Inner North",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3338",
+    "areaName": "Gr. Bendigo (C) - Inner West",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3338",
+    "areaName": "Gr. Bendigo (C) - S'saye",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3550",
+    "areaName": "Gr. Bendigo (C) - Pt B",
+    "safeRate": 99.3
+  },
+  {
+    "postcode": "3517",
+    "areaName": "Loddon (S) - North",
+    "safeRate": 97.0
+  },
+  {
+    "postcode": "3517",
+    "areaName": "Loddon (S) - South",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3875",
+    "areaName": "E. Gippsland (S) - Bairnsdale",
+    "safeRate": 98.0
+  },
+  {
+    "postcode": "3888",
+    "areaName": "E. Gippsland (S) - Orbost",
+    "safeRate": 96.7
+  },
+  {
+    "postcode": "3875",
+    "areaName": "E. Gippsland (S) - South-West",
+    "safeRate": 93.3
+  },
+  {
+    "postcode": "3971",
+    "areaName": "Wellington (S) - Alberton",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3971",
+    "areaName": "Wellington (S) - Avon",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3860",
+    "areaName": "Wellington (S) - Maffra",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3847",
+    "areaName": "Wellington (S) - Rosedale",
+    "safeRate": 100.0
+  },
+  {
+    "postcode": "3850",
+    "areaName": "Wellington (S) - Sale",
+    "safeRate": 96.2
+  },
+  {
+    "postcode": "3820",
+    "areaName": "Baw Baw (S) - Pt A",
+    "safeRate": 99.0
+  },
+  {
+    "postcode": "3825",
+    "areaName": "Latrobe (C) - Moe",
+    "safeRate": 99.5
+  },
+  {
+    "postcode": "3840",
+    "areaName": "Latrobe (C) - Morwell",
+    "safeRate": 94.9
+  }
+]
