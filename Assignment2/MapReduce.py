@@ -13,7 +13,7 @@ except couchdb.ServerError:
     sys.exit()
 
 try:
-    tweetsDB = tweets_database['tweets']
+    tweetsDB = tweets_database['tweets_crawler']
 except couchdb.ResourceNotFound:
     print("Cannot find the database ... Exiting\n")
     sys.exit()
