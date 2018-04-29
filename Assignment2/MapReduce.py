@@ -30,7 +30,7 @@ class MyMapView(object):
                             }
                         }
                         """
-        sydney_view = couchdb.design.ViewDefinition('tweets', 'sydney_tweets', sydney_tweets)
+        sydney_view = couchdb.design.ViewDefinition('tweets_crawler', 'sydney_tweets', sydney_tweets)
         sydney_view.sync(tweetsDB)
 
         melbourne_tweets = """
@@ -41,7 +41,7 @@ class MyMapView(object):
                             }
                         }
                         """
-        melbourne_view = couchdb.design.ViewDefinition('tweets', 'melbourne_tweets', melbourne_tweets)
+        melbourne_view = couchdb.design.ViewDefinition('tweets_crawler', 'melbourne_tweets', melbourne_tweets)
         melbourne_view.sync(tweetsDB)
 
         canberra_tweets = """
@@ -52,7 +52,7 @@ class MyMapView(object):
                                 }
                             }
                             """
-        canberra_view = couchdb.design.ViewDefinition('tweets', 'canberra_tweets', canberra_tweets)
+        canberra_view = couchdb.design.ViewDefinition('tweets_crawler', 'canberra_tweets', canberra_tweets)
         canberra_view.sync(tweetsDB)
 
         perth_tweets = """
@@ -63,7 +63,7 @@ class MyMapView(object):
                             }
                         }
                         """
-        perth_view = couchdb.design.ViewDefinition('tweets', 'perth_tweets', perth_tweets)
+        perth_view = couchdb.design.ViewDefinition('tweets_crawler', 'perth_tweets', perth_tweets)
         perth_view.sync(tweetsDB)
 
     def run(self):
