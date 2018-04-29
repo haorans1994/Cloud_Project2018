@@ -6,8 +6,8 @@ import traceback
 from tweepy.utils import import_simplejson
 
 AUS_GEO_CODE = [113.03, -39.06, 154.73, -12.28]
-USER_NAME = "database"
-PASSWORD = "123456"
+USER_NAME = "assignment2"
+PASSWORD = "3010"
 HOST_NAME = "127.0.0.1"
 
 
@@ -18,13 +18,13 @@ except couchdb.ServerError:
     sys.exit()
 
 try:
-    tweetsDB = client['tweets']
+    tweetsDB = client['tweets_crawler']
 except couchdb.ResourceNotFound:
     print("Cannot find the database ... Exiting\n")
     sys.exit()
 
 try:
-    tweetsSearchDB = client['twitter_search']
+    tweetsSearchDB = client['tweets_search']
 except couchdb.ResourceNotFound:
     print("Cannot find the database ... Exiting\n")
     sys.exit()
@@ -79,7 +79,7 @@ class MyStreamListener(tweepy.StreamListener):
 #get twitter authorization info
 def collect_info():
     try:
-        infoDB = client['twitter_authorization']
+        infoDB = client['twitter_api_authorization']
     except couchdb.ResourceNotFound:
         print("Cannot find the database ... Exiting\n")
         sys.exit()
