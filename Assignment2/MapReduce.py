@@ -2,8 +2,8 @@ import couchdb
 import couchdb.design
 import sys
 
-USER_NAME = "database"
-PASSWORD = "123456"
+USER_NAME = "assignment2"
+PASSWORD = "3010"
 HOST_NAME = "127.0.0.1"
 
 try:
@@ -67,7 +67,7 @@ class MyMapView(object):
         perth_view.sync(tweetsDB)
 
     def run(self):
-        print("Test!")
+        print("Create map view indexes!")
         self.create_view()
 
 
