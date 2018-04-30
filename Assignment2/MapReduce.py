@@ -37,6 +37,11 @@ class MyMapView(object):
         perth_tweets = "function (doc) {var location = doc.place.full_name.split(',');if(location[0] == 'Perth' || location[1] == 'Perth'){emit(doc.place.name, [doc.text, doc.place.bounding_box])}}"
         perth_view = couchdb.design.ViewDefinition('tweets_crawler', 'perth_tweets', perth_tweets)
         perth_view.sync(tweetsDB)
+        
+        map_tweets = 'function (doc) {var location = doc.place.full_name.split(",");if(location[0] == "Perth" || location[1] == "Perth"){emit(doc.place.name, [doc.text, doc.place.bounding_box])}}'
+        map_reduce = 'function (keys, valuse, rereduce) { var total={}; var text=values[0]; for (i in text) { if (total[text[i]] == undefined) { total[text[i]] =1; } else { total[text[i]]++; }} return total;}'
+        map_view = couchdb.design.ViewDefinition('tweets_crawler', 'map_tweets', map_tweets, map_reduce)
+        map_view.sync(tweetsDB)
 
     def run(self):
         print("Create map view indexes!")
