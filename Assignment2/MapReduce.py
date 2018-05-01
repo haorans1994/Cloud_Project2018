@@ -22,7 +22,7 @@ except couchdb.ResourceNotFound:
 class MyMapView(object):
 
     def create_view(self):
-        sydney_tweets = "function (doc) { var location = doc.place.full_name.split(','); if(location[0].includes('Sydney') || location[1].includes('Sydney')){ emit(doc.place.name, [doc.text, doc.coordinates, doc.place.place_type])}}"
+        sydney_tweets = "function (doc) { var location = doc.place.full_name.split(','); if(doc.place.full_name.indexOf('Sydeny') != -1){ emit(doc.place.name, [doc.text, doc.coordinates, doc.place.place_type])}}"
         sydney_view = couchdb.design.ViewDefinition('tweets_crawler', 'sydney_tweets', sydney_tweets)
         sydney_view.sync(tweetsDB)
 
