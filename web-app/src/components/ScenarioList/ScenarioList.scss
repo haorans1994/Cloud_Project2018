@@ -1,0 +1,38 @@
+@media (min-width: 768px) {
+  .first-scenario {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+    .card-img-container {
+      width: 35%;
+      margin-right: 1rem;
+    }
+  }
+
+  .second-scenario {
+    width: 46%;
+    margin-top: -200px;
+    float: right;
+
+    .card-img-container {
+      width: 80%;
+    }
+  }
+
+  .third-scenario {
+    width: 40%;
+    margin-left: 5%;
+    flex-direction: column-reverse;
+  }
+
+  .fourth-scenario {
+    width: 100%;
+    margin-top: -10rem;
+    flex-direction: row-reverse;
+
+    .card-img-container {
+      width: 35%;
+      margin-right: 1rem;
+    }
+  }
+}

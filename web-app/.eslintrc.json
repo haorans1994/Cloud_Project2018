@@ -13,7 +13,15 @@
     "react/no-danger": "off",
     "linebreak-style": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight", "to"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ]
   },
   "settings": {
     "import/core-modules": []
