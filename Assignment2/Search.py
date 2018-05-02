@@ -34,7 +34,7 @@ class TwitterGrabe(object):
         info = collect_info()
         self.auth = tweepy.OAuthHandler(info['consumer_key'], info['consumer_secret'])
         self.auth.set_access_token(info["access_token"], info["access_token_secret"])
-        self.api = tweepy.API(self.auth)
+        self.api = tweepy.API(self.auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
     def run(self):
         i = 0
@@ -42,7 +42,8 @@ class TwitterGrabe(object):
         placeId = places[0].id
         doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
         maxId = doc["max_id"]
-        while i < 180:
+        print("Begin to get tweets")
+        while True:
             """get data from search api"""
             if maxId == 0:
                 search = self.api.search(q="place:%s" % placeId, count=100)
@@ -50,9 +51,8 @@ class TwitterGrabe(object):
                 search = self.api.search(q="place:%s" % placeId, count=100, max_id=maxId)
             maxId = tweet_find_min_id(search)
             tweet_save(search)
-            i = i+1
-        doc["max_id"] = maxId
-        tweetsMaxId.save(doc)
+            doc["max_id"] = maxId
+            tweetsMaxId.save(doc)
         print(self.api.rate_limit_status())
         print("search function finish")
 
