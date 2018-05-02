@@ -5,8 +5,8 @@ import traceback
 from tweepy.utils import import_simplejson
 
 AUS_GEO_CODE = [113.03, -39.06, 154.73, -12.28]
-USER_NAME = "database"
-PASSWORD = "123456"
+USER_NAME = "assignment2"
+PASSWORD = "3010"
 HOST_NAME = "127.0.0.1"
 
 
@@ -17,7 +17,13 @@ except couchdb.ServerError:
     sys.exit()
 
 try:
-    tweetsSearchDB = client['twitter_search2']
+    tweetsSearchDB = client['tweets_search']
+except couchdb.ResourceNotFound:
+    print("Cannot find the database1 ... Exiting\n")
+    sys.exit()
+
+try:
+    tweetsMaxId = client['tweets_max_id']
 except couchdb.ResourceNotFound:
     print("Cannot find the database1 ... Exiting\n")
     sys.exit()
@@ -32,34 +38,36 @@ class TwitterGrabe(object):
 
     def run(self):
         i = 0
-        last = []
         places = self.api.geo_search(query="AU", granularity="country")
         placeId = places[0].id
-        while i < 145:
+        doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
+        minId = doc["max_id"]
+        while i < 180:
             """get data from search api"""
-            search = self.api.search(q="place:%s" % placeId, count=100)
-            current = tweet_reduce_duplicates(search, last)
-            tweet_save(current)
-            last = last + current
+            search = self.api.search(q="place:%s" % placeId, count=100, since_id=minId)
+            minId = tweet_find_max_id(search)
+            tweet_save(search)
             i = i+1
-        data = self.api.rate_limit_status()
-        print(data)
+        doc["max_id"] = minId
+        tweetsMaxId.save(doc)
+        print(self.api.rate_limit_status())
         print("search function finish")
 
-def tweet_reduce_duplicates(search, last):
-    reduplicate = []
+def tweet_find_max_id(search):
+    maxId = 0
+    i = 0
     for tweet in search:
-        for previous in last:
-            if tweet._json['id'] == previous._json['id']:
-                reduplicate.append(tweet)
-    for redup in reduplicate:
-        search.remove(redup)
-    return search
+        if i == 0:
+            maxId = tweet._json['id']
+        if tweet._json['id'] > maxId:
+            maxId = tweet._json['id']
+        i = i + 1
+    return maxId
 
 #get twitter authorization info
 def collect_info():
     try:
-        infoDB = client['twitter_authorization']
+        infoDB = client['twitter_api_authorization']
     except couchdb.ResourceNotFound:
         print("Cannot find the database2 ... Exiting\n")
         sys.exit()
