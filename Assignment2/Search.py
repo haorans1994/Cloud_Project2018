@@ -41,14 +41,14 @@ class TwitterGrabe(object):
         places = self.api.geo_search(query="AU", granularity="country")
         placeId = places[0].id
         doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
-        minId = doc["max_id"]
+        minId = doc["min_id"]
         while i < 180:
             """get data from search api"""
             search = self.api.search(q="place:%s" % placeId, count=100, since_id=minId)
             minId = tweet_find_max_id(search)
             tweet_save(search)
             i = i+1
-        doc["max_id"] = minId
+        doc["min_id"] = minId
         tweetsMaxId.save(doc)
         print(self.api.rate_limit_status())
         print("search function finish")
