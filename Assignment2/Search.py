@@ -37,7 +37,6 @@ class TwitterGrabe(object):
         self.api = tweepy.API(self.auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
     def run(self):
-        i = 0
         places = self.api.geo_search(query="AU", granularity="country")
         placeId = places[0].id
         doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
@@ -53,7 +52,6 @@ class TwitterGrabe(object):
             tweet_save(search)
             doc["max_id"] = maxId
             tweetsMaxId.save(doc)
-        print(self.api.rate_limit_status())
         print("search function finish")
 
 def tweet_find_min_id(search):
