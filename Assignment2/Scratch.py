@@ -49,10 +49,10 @@ class TwitterGrabe(object):
             places = self.api.geo_search(query="AU", granularity="country")
             placeId = places[0].id
             i = 0
-            while i < 20:
-                search = self.api.search(q="place:%s" % placeId, count=100)
-                tweet_save(search)
-                i=i+1
+#             while i < 20:
+#                 search = self.api.search(q="place:%s" % placeId, count=100)
+#                 tweet_save(search)
+#                 i=i+1
             print("search function finish")
             loop = False
 
