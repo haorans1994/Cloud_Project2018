@@ -41,28 +41,31 @@ class TwitterGrabe(object):
         places = self.api.geo_search(query="AU", granularity="country")
         placeId = places[0].id
         doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
-        minId = doc["min_id"]
+        maxId = doc["max_id"]
         while i < 180:
             """get data from search api"""
-            search = self.api.search(q="place:%s" % placeId, count=100, since_id=minId)
-            minId = tweet_find_max_id(search)
+            if maxId == 0:
+                search = self.api.search(q="place:%s" % placeId, count=100)
+            else:
+                search = self.api.search(q="place:%s" % placeId, count=100, max_id=maxId)
+            maxId = tweet_find_min_id(search)
             tweet_save(search)
             i = i+1
-        doc["min_id"] = minId
+        doc["max_id"] = maxId
         tweetsMaxId.save(doc)
         print(self.api.rate_limit_status())
         print("search function finish")
 
-def tweet_find_max_id(search):
-    maxId = 0
+def tweet_find_min_id(search):
+    minId = 0
     i = 0
     for tweet in search:
         if i == 0:
-            maxId = tweet._json['id']
-        if tweet._json['id'] > maxId:
-            maxId = tweet._json['id']
+            minId = tweet._json['id']
+        if tweet._json['id'] < minId:
+            minId = tweet._json['id']
         i = i + 1
-    return maxId
+    return minId
 
 #get twitter authorization info
 def collect_info():
