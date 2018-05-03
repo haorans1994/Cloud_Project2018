@@ -1,5 +1,4 @@
 import googlemaps
-import couchdb
 import couchdb.design
 import sys
 from tweepy.utils import import_simplejson
@@ -57,7 +56,7 @@ def convert_postcode():
     for item in tweetsDB.view('tweets_crawler/melbourne_tweets'):
         coordinate = []
         if item.value[2]:
-            coordinate = [item.value[2].coordinates[1], item.value[2].coordinates[0]]
+            coordinate = [item.value[2]['coordinates'][1], item.value[2]['coordinates'][0]]
         if item.value[1] == 'neighborhood':
             postcode = getPostCode_suburb(item.key)
             str = {'name':item.key, 'postcode': postcode, 'coordinates': coordinate}
@@ -78,5 +77,3 @@ def sava_database(str):
     tweetsPostcode.save(json.loads(data))
 
 convert_postcode()
-
-
