@@ -23,7 +23,7 @@ except couchdb.ResourceNotFound:
     sys.exit()
 
 try:
-    tweetsMaxId = client['tweets_max_id']
+    tweetsMaxId = client['tweets_id']
 except couchdb.ResourceNotFound:
     print("Cannot find the database1 ... Exiting\n")
     sys.exit()
@@ -47,7 +47,7 @@ class TwitterGrabe(object):
             if maxId == 0:
                 search = self.api.search(q="place:%s" % placeId, count=100)
             else:
-                search = self.api.search(q="place:%s" % placeId, count=100, max_id=maxId)
+                search = self.api.search(q="place:%s" % placeId, count=100, max_id=maxId, until="2018-04-23")
             maxId = tweet_find_min_id(search)
             tweet_save(search)
             doc["max_id"] = maxId
