@@ -55,12 +55,14 @@ def getPostCode_coord(coordinate):
 
 def convert_postcode():
     for item in tweetsDB.view('tweets_crawler/melbourne_tweets'):
+        coordinate = []
+        if item.value[2]:
+            coordinate = [item.value[2].coordinates[1], item.value[2].coordinates[0]]
         if item.value[1] == 'neighborhood':
             postcode = getPostCode_suburb(item.key)
-            str = {'name':item.key, 'postcode':postcode}
+            str = {'name':item.key, 'postcode': postcode, 'coordinates': coordinate}
             sava_database(str)
         elif item.value[1] == 'city' & item.value[2]:
-            coordinate = [item.value[2].coordinates[1], item.value[2].coordinates[0]]
             postcode = getPostCode_coord(coordinate)
             str = {'name': item.key, 'postcode': postcode, 'coordinates': coordinate}
             sava_database(str)
