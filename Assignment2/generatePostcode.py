@@ -61,10 +61,11 @@ def convert_postcode():
             postcode = getPostCode_suburb(item.key)
             str = {'name':item.key, 'postcode': postcode, 'coordinates': coordinate}
             sava_database(str)
-        elif item.value[1] == 'city' & item.value[2]:
-            postcode = getPostCode_coord(coordinate)
-            str = {'name': item.key, 'postcode': postcode, 'coordinates': coordinate}
-            sava_database(str)
+        elif item.value[1] == 'city':
+            if item.value[2]:
+                postcode = getPostCode_coord(coordinate)
+                str = {'name': item.key, 'postcode': postcode, 'coordinates': coordinate}
+                sava_database(str)
     print("Finish adding post to all tweets")
 
 def sava_database(str):
