@@ -23,7 +23,7 @@ except couchdb.ResourceNotFound:
     sys.exit()
 
 try:
-    tweetsMaxId = client['tweets_max_id']
+    tweetsMaxId = client['tweets_id']
 except couchdb.ResourceNotFound:
     print("Cannot find the database1 ... Exiting\n")
     sys.exit()
