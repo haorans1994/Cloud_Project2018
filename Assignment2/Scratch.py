@@ -63,7 +63,7 @@ class TwitterGrabe(object):
             placeId = places[0].id
             doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
             maxId = doc["max_id"]
-            print("Begin to get tweets")
+            print("Begin to get tweets through search API")
             while True:
                 if maxId == 0:
                     search = self.api.search(q="place:%s" % placeId, count=100)
@@ -150,15 +150,15 @@ def tweet_analyses(tweet):
 
 
 def tweet_find_min_id(search):
-    maxId = 0
+    minId = 0
     i = 0
     for tweet in search:
         if i == 0:
-            maxId = tweet._json['id']
-        if tweet._json['id'] < maxId:
-            maxId = tweet._json['id']
+            minId = tweet._json['id']
+        if tweet._json['id'] < minId:
+            minId = tweet._json['id']
         i = i + 1
-        return maxId
+    return minId
 
 
 x = TwitterGrabe()
