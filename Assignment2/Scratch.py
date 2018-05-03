@@ -22,13 +22,13 @@ except couchdb.ServerError:
     sys.exit()
 
 try:
-    tweetsDB = client['twitter_crawler']
+    tweetsDB = client['tweets_crawler']
 except couchdb.ResourceNotFound:
     print("Cannot find the database ... Exiting\n")
     sys.exit()
 
 try:
-    tweetsSearchDB = client['twitter_search']
+    tweetsSearchDB = client['tweets_search']
 except couchdb.ResourceNotFound:
     print("Cannot find the database1 ... Exiting\n")
     sys.exit()
@@ -100,7 +100,7 @@ class MyStreamListener(tweepy.StreamListener):
 #get twitter authorization info
 def collect_info():
     try:
-        infoDB = client['twitter_authorization']
+        infoDB = client['twitter_api_authorization']
     except couchdb.ResourceNotFound:
         print("Cannot find the database ... Exiting\n")
         sys.exit()
