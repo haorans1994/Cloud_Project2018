@@ -64,6 +64,7 @@ def convert_postcode():
             postcode = getPostCode_coord(coordinate)
             str = {'name': item.key, 'postcode': postcode, 'coordinates': coordinate}
             sava_database(str)
+    print("Finish adding post to all tweets")
 
 def sava_database(str):
     json = import_simplejson()
