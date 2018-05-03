@@ -71,9 +71,7 @@ class TwitterGrabe(object):
                     search = self.api.search(q="place:%s" % placeId, count=100, max_id=maxId)
                 maxId = tweet_find_min_id(search)
                 status = self.api.rate_limit_status()
-                if status['resources']['search']['/search/tweets']['remaining'] > 0:
-                    print(status['resources']['search']['/search/tweets']['remaining'])
-                elif status['resources']['search']['/search/tweets']['remaining'] == 0:
+                if status['resources']['search']['/search/tweets']['remaining'] == 0:
                     print("wait for back ")
                 tweet_save(search)
                 doc["max_id"] = maxId
