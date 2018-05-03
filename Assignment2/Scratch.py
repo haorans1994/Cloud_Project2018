@@ -28,7 +28,7 @@ except couchdb.ResourceNotFound:
     sys.exit()
 
 try:
-    tweetsSearchDB = client['twitter_search2']
+    tweetsSearchDB = client['twitter_search']
 except couchdb.ResourceNotFound:
     print("Cannot find the database1 ... Exiting\n")
     sys.exit()
