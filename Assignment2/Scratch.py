@@ -102,7 +102,7 @@ class MyStreamListener(tweepy.StreamListener):
 #get twitter authorization info
 def collect_info():
     try:
-        infoDB = client['twitter_api_authorization']
+        infoDB = client['tweets_api_authorization']
     except couchdb.ResourceNotFound:
         print("Cannot find the database ... Exiting\n")
         sys.exit()
