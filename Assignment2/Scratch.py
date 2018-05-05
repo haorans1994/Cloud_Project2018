@@ -77,7 +77,7 @@ class TwitterGrabe(object):
                     tweet_save(search)
                     doc["max_id"] = maxId
                     tweetsMaxId.save(doc)
-
+                print("search function stopped!!!")
 
 
 class MyStreamListener(tweepy.StreamListener):
