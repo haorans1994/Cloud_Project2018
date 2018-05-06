@@ -2,6 +2,7 @@ import re
 import sys
 import nltk
 import couchdb
+import json
 
 dictionary = {} #word freq
 stopWords = list(nltk.corpus.stopwords.words('english'))
@@ -30,6 +31,11 @@ except couchdb.ResourceNotFound:
     print("Cannot find the database1 ... Exiting\n")
     sys.exit()
 
+try:
+    tweetsFrequencyDB = client['tweets_frequency']
+except couchdb.ResourceNotFound:
+    print("Cannot find the database1 ... Exiting\n")
+    sys.exit()
 
 while True:
     for tweet in tweetsSearchDB:
@@ -51,5 +57,6 @@ while True:
                 dictionary[localkey] = fredist[localkey]
     break
 
-print(sorted(dictionary.items(), key = lambda  x:x[1], reverse = True))
+frequency = json.dumps(sorted(dictionary.items(), key = lambda  x:x[1], reverse = True))
+tweetsFrequencyDB.save(frequency)
 
