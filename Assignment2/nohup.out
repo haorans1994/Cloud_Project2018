@@ -1,0 +1,152 @@
+Rate limit reached. Sleeping for: 177
+Rate limit reached. Sleeping for: 234
+Rate limit reached. Sleeping for: 166
+Rate limit reached. Sleeping for: 100
+Rate limit reached. Sleeping for: 222
+Rate limit reached. Sleeping for: 161
+Rate limit reached. Sleeping for: 196
+Rate limit reached. Sleeping for: 222
+Rate limit reached. Sleeping for: 113
+Rate limit reached. Sleeping for: 253
+Rate limit reached. Sleeping for: 165
+Rate limit reached. Sleeping for: 119
+Rate limit reached. Sleeping for: 311
+Rate limit reached. Sleeping for: 247
+Rate limit reached. Sleeping for: 351
+Rate limit reached. Sleeping for: 354
+Rate limit reached. Sleeping for: 76
+Rate limit reached. Sleeping for: 195
+Rate limit reached. Sleeping for: 132
+Rate limit reached. Sleeping for: 169
+Rate limit reached. Sleeping for: 101
+Rate limit reached. Sleeping for: 82
+Rate limit reached. Sleeping for: 100
+Rate limit reached. Sleeping for: 50
+Rate limit reached. Sleeping for: 255
+Rate limit reached. Sleeping for: 149
+Rate limit reached. Sleeping for: 147
+Rate limit reached. Sleeping for: 66
+Rate limit reached. Sleeping for: 87
+Rate limit reached. Sleeping for: 202
+Rate limit reached. Sleeping for: 96
+Rate limit reached. Sleeping for: 162
+Rate limit reached. Sleeping for: 274
+Rate limit reached. Sleeping for: 260
+Rate limit reached. Sleeping for: 180
+Rate limit reached. Sleeping for: 205
+Rate limit reached. Sleeping for: 106
+Rate limit reached. Sleeping for: 197
+Rate limit reached. Sleeping for: 234
+Rate limit reached. Sleeping for: 306
+Rate limit reached. Sleeping for: 327
+Asyc task for stream API
+Begin to get tweets through search API
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+Rate limit reached. Sleeping for: 181
+Rate limit reached. Sleeping for: 81
+Rate limit reached. Sleeping for: 101
+Rate limit reached. Sleeping for: 98
+Rate limit reached. Sleeping for: 78
+Rate limit reached. Sleeping for: 162
+Rate limit reached. Sleeping for: 117
+Rate limit reached. Sleeping for: 132
+Rate limit reached. Sleeping for: 79
+Rate limit reached. Sleeping for: 183
+Rate limit reached. Sleeping for: 190
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/nltk/corpus/util.py", line 80, in __load
+    try: root = nltk.data.find('{}/{}'.format(self.subdir, zip_name))
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/nltk/data.py", line 675, in find
+    raise LookupError(resource_not_found)
+LookupError: 
+**********************************************************************
+  Resource [93mstopwords[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('stopwords')
+  [0m
+  Searched in:
+    - '/home/ubuntu/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/usr/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/lib/nltk_data'
+**********************************************************************
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "frequency.py", line 7, in <module>
+    stopWords = list(nltk.corpus.stopwords.words('english'))
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/nltk/corpus/util.py", line 116, in __getattr__
+    self.__load()
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/nltk/corpus/util.py", line 81, in __load
+    except LookupError: raise e
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/nltk/corpus/util.py", line 78, in __load
+    root = nltk.data.find('{}/{}'.format(self.subdir, self.__name))
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/nltk/data.py", line 675, in find
+    raise LookupError(resource_not_found)
+LookupError: 
+**********************************************************************
+  Resource [93mstopwords[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('stopwords')
+  [0m
+  Searched in:
+    - '/home/ubuntu/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/usr/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/lib/nltk_data'
+**********************************************************************
+
