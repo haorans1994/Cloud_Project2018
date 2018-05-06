@@ -65,19 +65,19 @@ class TwitterGrabe(object):
             maxId = doc["max_id"]
             print("Begin to get tweets through search API")
             while True:
-                while True:
-                    if maxId == 0:
-                        search = self.api.search(q="place:%s" % placeId, count=100)
-                    else:
-                        search = self.api.search(q="place:%s" % placeId, count=100, max_id=maxId)
-                    maxId = tweet_find_min_id(search)
-                    status = self.api.rate_limit_status()
-                    if status['resources']['search']['/search/tweets']['remaining'] == 0:
-                        print("wait for back ")
-                    tweet_save(search)
-                    doc["max_id"] = maxId
-                    tweetsMaxId.save(doc)
-                print("search function stopped!!!")
+                if maxId == 0:
+                    search = self.api.search(q="place:%s" % placeId, count=100)
+                else:
+                    search = self.api.search(q="place:%s" % placeId, count=100, max_id=maxId)
+                maxId = tweet_find_min_id(search)
+                status = self.api.rate_limit_status()
+                if status['resources']['search']['/search/tweets']['remaining'] == 0:
+                    print("wait for back ")
+                tweet_save(search)
+                doc["max_id"] = maxId
+                tweetsMaxId.save(doc)
+
+
 
 
 class MyStreamListener(tweepy.StreamListener):
