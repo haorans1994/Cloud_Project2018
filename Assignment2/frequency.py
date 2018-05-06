@@ -59,6 +59,7 @@ while True:
     break
 
 frequency = json.dumps(sorted(dictionary.items(), key = lambda  x:x[1], reverse = True))
+frequency = frequency[1:100]
 print(frequency)
-#tweetsFrequencyDB.save(frequency)
+tweetsFrequencyDB.save(frequency)
 
