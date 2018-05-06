@@ -58,7 +58,7 @@ while True:
                 dictionary[localkey] = fredist[localkey]
     break
 
-frequency = json.dumps(sorted(dictionary.items(), key = lambda  x:x[1], reverse = True))
+frequency = sorted(dictionary.items(), key = lambda  x:x[1], reverse = True)
 frequency = frequency[0:100]
 print("!!!!!!!!!")
 print(frequency)
