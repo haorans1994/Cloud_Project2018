@@ -193,3 +193,21 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 429, in request
     raise ServerError((status, error))
 couchdb.http.ServerError: (415, ('bad_content_type', 'Content-Type must be application/json'))
+Rate limit reached. Sleeping for: 110
+!!!!!!!!!
+[["I", 1813], ["-", 1756], [".", 1557], ["0.0", 1511], ["today", 1252], ["Melbourne", 1245], ["Rain"
+!!!!!!!!!
+Traceback (most recent call last):
+  File "frequency.py", line 66, in <module>
+    tweetsFrequencyDB.save(frequency)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/client.py", line 529, in save
+    _, _, data = func(body=doc, **options)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 574, in post_json
+    **params)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 596, in _request_json
+    headers=headers, **params)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 592, in _request
+    credentials=self.credentials)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 429, in request
+    raise ServerError((status, error))
+couchdb.http.ServerError: (415, ('bad_content_type', 'Content-Type must be application/json'))
