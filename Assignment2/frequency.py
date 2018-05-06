@@ -40,7 +40,7 @@ except couchdb.ResourceNotFound:
 
 while True:
     for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
-        text = tweet['text']
+        text = tweet.value[0]
         text = re.sub(r'[@][\S]*\s', 'TAG', text)  # replace the @user with tag
         text = re.sub(r'((www\.[^\s]+)|(https?://[^\s]+))', 'URL', text)  # replace the web address with url
         text = re.sub(r'#([^\s]+)', r'\1', text)  # remove the '#'
