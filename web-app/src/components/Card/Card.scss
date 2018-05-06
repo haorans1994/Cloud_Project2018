@@ -6,9 +6,10 @@
   transition: all 0.2s ease-out;
 
   .card-title {
-    font-size: 4vw;
+    margin: 10px 0;
+    font-size: 2.5rem;
     font-weight: 700;
-    line-height: 72px;
+    line-height: 2.5rem;
   }
 
   .card-img-container {
@@ -37,6 +38,16 @@
       &:hover {
         transform: scale(1.2);
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem 2rem;
+
+    .card-title {
+      margin: 20px 0;
     }
   }
 }

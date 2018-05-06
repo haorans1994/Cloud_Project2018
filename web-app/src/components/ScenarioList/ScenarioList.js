@@ -9,8 +9,7 @@ import imgScenarioSafety from './images/scenario_safety.jpg';
 export default class ScenarioList extends Component {
   render() {
     return (
-      <div>
-        <div style={{ height: '100vh' }} />
+      <div className="scenario-list">
         <Link to="/scenario/sitting">
           <Card
             image={imgScenarioSitting}
@@ -19,25 +18,30 @@ export default class ScenarioList extends Component {
             className="first-scenario"
           />
         </Link>
-        <Card
-          image={imgScenarioSafety}
-          title="Safety"
-          titlePosition="top"
-          className="second-scenario"
-        />
-        <Card
-          image={imgScenarioDistress}
-          title="Distress"
-          titlePosition="bottom"
-          className="third-scenario"
-        />
-        <Card
-          image={imgScenarioSitting}
-          title="Ploy"
-          titlePosition="right"
-          className="fourth-scenario"
-        />
-        <div style={{ height: '200vh' }} />
+        <Link to="/scenario/safety">
+          <Card
+            image={imgScenarioSafety}
+            title="Safety"
+            titlePosition="top"
+            className="second-scenario"
+          />
+        </Link>
+        <Link to="/scenario/distress">
+          <Card
+            image={imgScenarioDistress}
+            title="Distress"
+            titlePosition="bottom"
+            className="third-scenario"
+          />
+        </Link>
+        <Link to="/scenario/">
+          <Card
+            image={imgScenarioSitting}
+            title="Ploy"
+            titlePosition="right"
+            className="fourth-scenario"
+          />
+        </Link>
       </div>
     );
   }
