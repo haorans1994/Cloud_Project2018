@@ -60,6 +60,8 @@ while True:
 
 frequency = json.dumps(sorted(dictionary.items(), key = lambda  x:x[1], reverse = True))
 frequency = frequency[0:100]
+print("!!!!!!!!!")
 print(frequency)
+print("!!!!!!!!!")
 tweetsFrequencyDB.save(frequency)
 
