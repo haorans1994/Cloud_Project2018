@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 import dataChart from './data/data_chart.json';
 
-export default class ScenarioSafetyChart extends Component {
+export default class ScenarioDistressChart extends Component {
   static propTypes = {
     height: PropTypes.number
   };
-
   static defaultProps = {
     height: 600
   };
 
   render() {
     const { height } = this.props;
-    const dataMale = dataChart.male.map(obj => [obj.positive, obj.safety]);
-    const dataFemale = dataChart.female.map(obj => [obj.positive, obj.safety]);
+    const dataMel = dataChart.Mel.map(obj => [obj.positive, obj.distress]);
+    const dataSyd = dataChart.Syd.map(obj => [obj.positive, obj.distress]);
+    const dataPerth = dataChart.Perth.map(obj => [obj.positive, obj.distress]);
+
     const options = {
       title: {
-        text: 'Safety Rate',
+        text: 'Psychological Distress Rate',
         subtext: 'Consistency with Positive Rate'
       },
       grid: {
@@ -55,7 +56,7 @@ export default class ScenarioSafetyChart extends Component {
       },
       brush: {},
       legend: {
-        data: ['NightTime', 'DayTime'],
+        data: ['Melbourne', 'Sydney'],
         left: 'center'
       },
       xAxis: [
@@ -84,9 +85,9 @@ export default class ScenarioSafetyChart extends Component {
       ],
       series: [
         {
-          name: 'NightTime',
+          name: 'Melbourne',
           type: 'scatter',
-          data: dataFemale,
+          data: dataMel,
           itemStyle: {
             color: '#f1c400'
           },
@@ -102,7 +103,7 @@ export default class ScenarioSafetyChart extends Component {
             data: [
               [
                 {
-                  name: 'NightTime Distribution',
+                  name: 'Melbourne Distribution',
                   xAxis: 'min',
                   yAxis: 'min'
                 },
@@ -126,9 +127,9 @@ export default class ScenarioSafetyChart extends Component {
           }
         },
         {
-          name: 'DayTime',
+          name: 'Sydney',
           type: 'scatter',
-          data: dataMale,
+          data: dataSyd,
           markArea: {
             silent: true,
             itemStyle: {
@@ -141,7 +142,7 @@ export default class ScenarioSafetyChart extends Component {
             data: [
               [
                 {
-                  name: 'DayTime Distribution',
+                  name: 'Sydney Distribution',
                   xAxis: 'min',
                   yAxis: 'min'
                 },
@@ -163,10 +164,51 @@ export default class ScenarioSafetyChart extends Component {
             },
             data: [{ type: 'average', name: 'Average' }, { xAxis: 170 }]
           }
+        },
+        {
+          name: 'Perth',
+          type: 'scatter',
+          data: dataPerth,
+          itemStyle: {
+            color: '#f1c400'
+          },
+          markArea: {
+            silent: true,
+            itemStyle: {
+              normal: {
+                color: 'transparent',
+                borderWidth: 1,
+                borderType: 'dashed'
+              }
+            },
+            data: [
+              [
+                {
+                  name: 'Perth Distribution',
+                  xAxis: 'min',
+                  yAxis: 'min'
+                },
+                {
+                  xAxis: 'max',
+                  yAxis: 'max'
+                }
+              ]
+            ]
+          },
+          markPoint: {
+            data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'Minimum' }]
+          },
+          markLine: {
+            lineStyle: {
+              normal: {
+                type: 'solid'
+              }
+            },
+            data: [{ type: 'average', name: 'Average' }, { xAxis: 160 }]
+          }
         }
       ]
     };
-
     return (
       <ReactEcharts
         option={options}

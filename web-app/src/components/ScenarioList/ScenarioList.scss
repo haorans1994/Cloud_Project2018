@@ -1,4 +1,12 @@
+.scenario-list {
+  padding-bottom: 4rem;
+}
+
 @media (min-width: 768px) {
+  .scenario-list {
+    padding-bottom: 10rem;
+  }
+
   .first-scenario {
     flex-direction: row-reverse;
     justify-content: flex-end;
