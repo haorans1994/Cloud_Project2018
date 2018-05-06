@@ -3,6 +3,7 @@ import sys
 import nltk
 import couchdb
 import json
+import couchdb.design
 
 dictionary = {} #word freq
 stopWords = list(nltk.corpus.stopwords.words('english'))
@@ -38,7 +39,7 @@ except couchdb.ResourceNotFound:
     sys.exit()
 
 while True:
-    for tweet in tweetsSearchDB:
+    for tweet in client.view('tweets_search/melbourne_tweets'):
         text = tweet['text']
         text = re.sub(r'[@][\S]*\s', 'TAG', text)  # replace the @user with tag
         text = re.sub(r'((www\.[^\s]+)|(https?://[^\s]+))', 'URL', text)  # replace the web address with url
