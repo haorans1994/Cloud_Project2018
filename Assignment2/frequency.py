@@ -58,10 +58,10 @@ while True:
                 dictionary[localkey] = fredist[localkey]
     break
 
-items = sorted(dictionary.items(), key = lambda  x:x[1], reverse = True)
+items = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
 frequency = {}
 
 for item in items:
-    frequency[item[0]] = item[1]
+    frequency['frequency'][item[0]] = item[1]
 
 tweetsFrequencyDB.save(frequency)
