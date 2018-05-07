@@ -62,6 +62,7 @@ items = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
 frequency = {}
 
 for item in items:
-    frequency['frequency'][item[0]] = item[1]
+    frequency[item[0]] = item[1]
 
-tweetsFrequencyDB.save(frequency)
+words = {"freq": frequency}
+tweetsFrequencyDB.save(words)
