@@ -211,3 +211,85 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 429, in request
     raise ServerError((status, error))
 couchdb.http.ServerError: (415, ('bad_content_type', 'Content-Type must be application/json'))
+Rate limit reached. Sleeping for: 183
+Rate limit reached. Sleeping for: 147
+Rate limit reached. Sleeping for: 134
+Rate limit reached. Sleeping for: 83
+Rate limit reached. Sleeping for: 207
+Rate limit reached. Sleeping for: 225
+Rate limit reached. Sleeping for: 110
+Rate limit reached. Sleeping for: 126
+Rate limit reached. Sleeping for: 262
+Rate limit reached. Sleeping for: 182
+Rate limit reached. Sleeping for: 297
+Rate limit reached. Sleeping for: 379
+Rate limit reached. Sleeping for: 33
+Rate limit reached. Sleeping for: 29
+Rate limit reached. Sleeping for: 132
+Rate limit reached. Sleeping for: 58
+Rate limit reached. Sleeping for: 110
+Rate limit reached. Sleeping for: 61
+Rate limit reached. Sleeping for: 86
+Rate limit reached. Sleeping for: 150
+Rate limit reached. Sleeping for: 66
+Rate limit reached. Sleeping for: 172
+Rate limit reached. Sleeping for: 126
+Rate limit reached. Sleeping for: 127
+Rate limit reached. Sleeping for: 93
+Rate limit reached. Sleeping for: 72
+Rate limit reached. Sleeping for: 80
+Rate limit reached. Sleeping for: 96
+Rate limit reached. Sleeping for: 172
+Rate limit reached. Sleeping for: 191
+Rate limit reached. Sleeping for: 69
+Rate limit reached. Sleeping for: 218
+Rate limit reached. Sleeping for: 90
+Rate limit reached. Sleeping for: 69
+Rate limit reached. Sleeping for: 254
+Rate limit reached. Sleeping for: 246
+Rate limit reached. Sleeping for: 274
+Rate limit reached. Sleeping for: 327
+Rate limit reached. Sleeping for: 59
+Rate limit reached. Sleeping for: 158
+Rate limit reached. Sleeping for: 29
+Rate limit reached. Sleeping for: 120
+Rate limit reached. Sleeping for: 122
+Rate limit reached. Sleeping for: 86
+Rate limit reached. Sleeping for: 97
+Rate limit reached. Sleeping for: 208
+Asyc task for stream API
+Begin to get tweets through search API
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+wait for back 
+Rate limit reached. Sleeping for: 57
+Rate limit reached. Sleeping for: 17
+Asyc task for stream API
+Begin to get tweets through search API
+wait for back 
+wait for back 
+Traceback (most recent call last):
+  File "frequency.py", line 42, in <module>
+    for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/client.py", line 1358, in __iter__
+    return iter(self.rows)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/client.py", line 1378, in rows
+    self._fetch()
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/client.py", line 1364, in _fetch
+    data = self.view._exec(self.options)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/client.py", line 1230, in _exec
+    _, _, data = _call_viewlike(self.resource, options)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/client.py", line 1289, in _call_viewlike
+    return resource.get_json(**_encode_view_options(options))
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 570, in get_json
+    return self._request_json('GET', path, headers=headers, **params)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 596, in _request_json
+    headers=headers, **params)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 592, in _request
+    credentials=self.credentials)
+  File "/usr/local/lib/python3.5/dist-packages/couchdb/http.py", line 429, in request
+    raise ServerError((status, error))
+couchdb.http.ServerError: (500, ('timeout', 'The request could not be processed in a reasonable amount of time.'))
