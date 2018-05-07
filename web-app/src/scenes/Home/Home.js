@@ -13,7 +13,7 @@ export default class Home extends Component {
         <ScenarioList />
         <h1 className="title">Team</h1>
         <div className="team">
-          <div className="team-img" style={{ backgroundImage: `url(${teamImg}）` }} />
+          <div className="team-img" style={{ backgroundImage: `url(${teamImg})` }} />
         </div>
       </div>
     );

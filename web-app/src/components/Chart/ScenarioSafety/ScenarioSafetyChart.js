@@ -14,8 +14,8 @@ export default class ScenarioSafetyChart extends Component {
 
   render() {
     const { height } = this.props;
-    const dataMale = dataChart.male.map(obj => [obj.positive, obj.safety]);
-    const dataFemale = dataChart.female.map(obj => [obj.positive, obj.safety]);
+    const dataDay = dataChart.DayTime.map(obj => [obj.positive, obj.safety]);
+    const dataNight = dataChart.NightTime.map(obj => [obj.positive, obj.safety]);
     const options = {
       title: {
         text: 'Safety Rate',
@@ -32,9 +32,9 @@ export default class ScenarioSafetyChart extends Component {
         showDelay: 0,
         formatter: params => {
           if (params.value.length > 1) {
-            return `${params.seriesName} :<br/>${params.value[0]}cm ${params.value[1]}kg `;
+            return `${params.seriesName} :<br/>${params.value[0]}% ${params.value[1]}% `;
           }
-          return `${params.seriesName} :<br/>${params.name} : ${params.value}kg `;
+          return `${params.seriesName} :<br/>${params.name} : ${params.value}% `;
         },
         axisPointer: {
           show: true,
@@ -86,9 +86,9 @@ export default class ScenarioSafetyChart extends Component {
         {
           name: 'NightTime',
           type: 'scatter',
-          data: dataFemale,
+          data: dataNight,
           itemStyle: {
-            color: '#f1c400'
+            color: '#333333'
           },
           markArea: {
             silent: true,
@@ -115,20 +115,12 @@ export default class ScenarioSafetyChart extends Component {
           },
           markPoint: {
             data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'Minimum' }]
-          },
-          markLine: {
-            lineStyle: {
-              normal: {
-                type: 'solid'
-              }
-            },
-            data: [{ type: 'average', name: 'Average' }, { xAxis: 160 }]
           }
         },
         {
           name: 'DayTime',
           type: 'scatter',
-          data: dataMale,
+          data: dataDay,
           markArea: {
             silent: true,
             itemStyle: {
@@ -154,14 +146,6 @@ export default class ScenarioSafetyChart extends Component {
           },
           markPoint: {
             data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'minimum' }]
-          },
-          markLine: {
-            lineStyle: {
-              normal: {
-                type: 'solid'
-              }
-            },
-            data: [{ type: 'average', name: 'Average' }, { xAxis: 170 }]
           }
         }
       ]
