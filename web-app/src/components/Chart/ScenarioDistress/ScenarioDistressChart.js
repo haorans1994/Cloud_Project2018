@@ -33,9 +33,9 @@ export default class ScenarioDistressChart extends Component {
         showDelay: 0,
         formatter: params => {
           if (params.value.length > 1) {
-            return `${params.seriesName} :<br/>${params.value[0]}cm ${params.value[1]}kg `;
+            return `${params.seriesName} :<br/>${params.value[0]}% ${params.value[1]}% `;
           }
-          return `${params.seriesName} :<br/>${params.name} : ${params.value}kg `;
+          return `${params.seriesName} :<br/>${params.name} : ${params.value}% `;
         },
         axisPointer: {
           show: true,
@@ -56,7 +56,7 @@ export default class ScenarioDistressChart extends Component {
       },
       brush: {},
       legend: {
-        data: ['Melbourne', 'Sydney'],
+        data: ['Melbourne', 'Sydney', 'Perth'],
         left: 'center'
       },
       xAxis: [
@@ -116,14 +116,6 @@ export default class ScenarioDistressChart extends Component {
           },
           markPoint: {
             data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'Minimum' }]
-          },
-          markLine: {
-            lineStyle: {
-              normal: {
-                type: 'solid'
-              }
-            },
-            data: [{ type: 'average', name: 'Average' }, { xAxis: 160 }]
           }
         },
         {
@@ -155,14 +147,6 @@ export default class ScenarioDistressChart extends Component {
           },
           markPoint: {
             data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'minimum' }]
-          },
-          markLine: {
-            lineStyle: {
-              normal: {
-                type: 'solid'
-              }
-            },
-            data: [{ type: 'average', name: 'Average' }, { xAxis: 170 }]
           }
         },
         {
@@ -170,7 +154,7 @@ export default class ScenarioDistressChart extends Component {
           type: 'scatter',
           data: dataPerth,
           itemStyle: {
-            color: '#f1c400'
+            color: '#003399'
           },
           markArea: {
             silent: true,
@@ -197,14 +181,6 @@ export default class ScenarioDistressChart extends Component {
           },
           markPoint: {
             data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'Minimum' }]
-          },
-          markLine: {
-            lineStyle: {
-              normal: {
-                type: 'solid'
-              }
-            },
-            data: [{ type: 'average', name: 'Average' }, { xAxis: 160 }]
           }
         }
       ]

@@ -1,7 +1,25 @@
 import React, { Component, Fragment } from 'react';
+// import axios from 'axios';
 import { ScenarioSafetyChart } from '../Chart';
 
 export default class Safety extends Component {
+  // componentDidMount() {
+  //   this.fetchDate();
+  // }
+
+  // fetchDate = () => {
+  //   const url =
+  //     'http://127.0.0.1:5984/tweets_crawler/_design/tweets_crawler/_view/melbourne_tweets';
+  //   axios
+  //     .get(url)
+  //     .then(res => {
+  //       console.log(res);
+  //     })
+  //     .catch(err => {
+  //       console.error(err);
+  //     });
+  // };
+
   render() {
     return (
       <Fragment>

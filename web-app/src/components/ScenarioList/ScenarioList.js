@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
+// import Fly from '../Fly/Fly';
 import './ScenarioList.css';
 import imgScenarioSitting from './images/scenario_sitting.jpg';
 import imgScenarioDistress from './images/scenario_distress.jpg';
@@ -34,10 +35,10 @@ export default class ScenarioList extends Component {
             className="third-scenario"
           />
         </Link>
-        <Link to="/scenario/">
+        <Link to="/scenario/weather">
           <Card
             image={imgScenarioSitting}
-            title="Ploy"
+            title="Weather"
             titlePosition="right"
             className="fourth-scenario"
           />
