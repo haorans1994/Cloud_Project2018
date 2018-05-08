@@ -18,7 +18,7 @@ except couchdb.ServerError:
     sys.exit()
 
 try:
-    tweetsSearchDB = client['tweets_crawler']
+    tweetsSearchDB = client['tweets_search']
 except couchdb.ResourceNotFound:
     print("Cannot find the database1 ... Exiting\n")
     sys.exit()
@@ -38,31 +38,28 @@ except couchdb.ResourceNotFound:
 lga_file = open("LGAcode.json").read()
 lga_file = json.loads(lga_file)
 lgaList = lga_file['features']
-
-for tweet in tweetsSearchDB.view('_all_docs', include_docs=True).rows:
+for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
     postcode = None
     lgaCode = None
-    item = tweet.doc
-    if 'place' in item:
-        place = item['place']
-        if 'place_type' in place:
-            if place['place_type'] == "neighborhood":
-                postcode = getPostCode.getPostcode(place['name'])
-                lgaCode = generateLGACode.generateLGA_code(str(postcode))
-                print(place['name'], postcode, lgaCode)
-            # elif place['place_type'] == "city":
-            #     if item['coordinates']:
-            #         coordinates = [item['coordinates']['coordinates'][0], item['coordinates']['coordinates'][1]]
-            #         for lga in lgaList:
-            #             lgaCoordinate = lga['geometry']['coordinates'][0][0]
-            #             contains = getLgaFromCoordinates.getLgaCode(coordinates, lgaCoordinate)
-            #             if contains:
-            #                 lgaCode = lga['properties']['area_code']
-            #                 break
-            #         print(place['name'], postcode, lgaCode)
+    if tweet.value[2] == "neighborhood":
+        postcode = getPostCode.getPostcode(tweet.key)
+        lgaCode = generateLGACode.generateLGA_code(str(postcode))
+        print(tweet.key, postcode, lgaCode)
+    elif tweet.value[2] == 'city':
+        if tweet.value[3]:
+            coordinates = [tweet.value[3]['coordinates'][0], tweet.value[3]['coordinates'][0]]
+            for lga in lgaList:
+                lgaCoordinate = lga['geometry']['coordinates'][0][0]
+                contains = getLgaFromCoordinates.getLgaCode(coordinates, lgaCoordinate)
+                if contains:
+                    lgaCode = lga['properties']['area_code']
+                    break
+            print(tweet.key, postcode, lgaCode)
 
 
-    # item['postcode'] = postcode
+
+
+        # item['postcode'] = postcode
     # item['lgacode'] = lgaCode
     # tweetsSearchDB.save(item)
 #
