@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
-// import Fly from '../Fly/Fly';
+import Fly from '../Fly/Fly';
 import './ScenarioList.css';
 import imgScenarioSitting from './images/scenario_sitting.jpg';
 import imgScenarioDistress from './images/scenario_distress.jpg';
 import imgScenarioSafety from './images/scenario_safety.jpg';
+import imgScenarioWeather from './images/scenario_weather.jpg';
 
 export default class ScenarioList extends Component {
   render() {
@@ -20,12 +21,14 @@ export default class ScenarioList extends Component {
           />
         </Link>
         <Link to="/scenario/safety">
-          <Card
-            image={imgScenarioSafety}
-            title="Safety"
-            titlePosition="top"
-            className="second-scenario"
-          />
+          <Fly speed="slow">
+            <Card
+              image={imgScenarioSafety}
+              title="Safety"
+              titlePosition="top"
+              className="second-scenario"
+            />
+          </Fly>
         </Link>
         <Link to="/scenario/distress">
           <Card
@@ -36,12 +39,24 @@ export default class ScenarioList extends Component {
           />
         </Link>
         <Link to="/scenario/weather">
-          <Card
-            image={imgScenarioSitting}
-            title="Weather"
-            titlePosition="right"
-            className="fourth-scenario"
-          />
+          <Fly>
+            <Card
+              image={imgScenarioWeather}
+              title="Weather"
+              titlePosition="top"
+              className="fourth-scenario"
+            />
+          </Fly>
+        </Link>
+        <Link to="/scenario/weather">
+          <Fly speed="fast">
+            <Card
+              image={imgScenarioWeather}
+              title="Weather"
+              titlePosition="right"
+              className="fifth-scenario"
+            />
+          </Fly>
         </Link>
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import dataChart from './data/data_chart.json';
+import dataChartJson from './data/data_chart.json';
 
 export default class ScenarioSafetyChart extends Component {
   static propTypes = {
@@ -13,7 +13,8 @@ export default class ScenarioSafetyChart extends Component {
   };
 
   render() {
-    const { height } = this.props;
+    const { height, data } = this.props;
+    const dataChart = data || dataChartJson;
     const dataDay = dataChart.DayTime.map(obj => [obj.positive, obj.safety]);
     const dataNight = dataChart.NightTime.map(obj => [obj.positive, obj.safety]);
     const options = {

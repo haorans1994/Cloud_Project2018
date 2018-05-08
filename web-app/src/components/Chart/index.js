@@ -3,3 +3,4 @@ export { default as ScenarioSafetyChart } from './ScenarioSafety/ScenarioSafetyC
 export { default as ScenarioSittingChart } from './ScenarioSitting/ScenarioSittingChart';
 export { default as ScenarioSittingBar } from './ScenarioSitting/ScenarioSittingBar';
 export { default as ScenarioWeatherWindChart } from './ScenarioWeather/ScenarioWeatherWindChart';
+export { default as ScenarioWeatherRainChart } from './ScenarioWeather/ScenarioWeatherRainChart';
