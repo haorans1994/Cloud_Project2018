@@ -3,9 +3,7 @@ import tweepy
 import time
 import couchdb
 import traceback
-import generatePostcode
 import liveSentiment
-from LGA import generateLGACode
 
 from tweepy.utils import import_simplejson
 
@@ -40,6 +38,7 @@ except couchdb.ResourceNotFound:
     sys.exit()
 
 
+
 class TwitterGrabe(object):
     def __init__(self):
         info = collect_info()
@@ -55,9 +54,9 @@ class TwitterGrabe(object):
         while loop:
             loop = False
             """use twitter stream api to get tweets"""
-            myStream.filter(locations=AUS_GEO_CODE, async=True)
-            print("Asyc task for stream API")
-
+            #myStream.filter(locations=AUS_GEO_CODE, async=True)
+            #print("Asyc task for stream API")
+            print(tweetsFromUser)
             """get data from search api"""
             places = self.api.geo_search(query="AU", granularity="country")
             placeId = places[0].id

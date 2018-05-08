@@ -45,7 +45,7 @@ for tweet in tweetsSearchDB.view('_all_docs', include_docs=True).rows:
     item = tweet.doc
     if 'place' in item:
         place = item['place']
-        if place['place_type'] != None:
+        if 'place_type' in place:
             if place['place_type'] == "neighborhood":
                 postcode = getPostCode.getPostcode(place['name'])
                 lgaCode = generateLGACode.generateLGA_code(str(postcode))
