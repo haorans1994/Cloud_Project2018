@@ -54,7 +54,7 @@ for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
                 if contains:
                     lgaCode = lga['properties']['area_code']
                     break
-            print(tweet.key, postcode, lgaCode)
+            print(tweet.key, coordinates, postcode, lgaCode)
 
 
 
