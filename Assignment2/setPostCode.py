@@ -53,13 +53,14 @@ for tweet in tweetsSearchDB.view('_all_docs', include_docs=True).rows:
             if item['coordinates']:
                 coordinates = [item['coordinates']['coordinates'][1], item['coordinates']['coordinates'][0]]
                 for lga in lgaList:
-                    lgaCode = getLgaFromCoordinates.getLgaCode(coordinates, lga[0][0][0])
+                    lgaCode = getLgaFromCoordinates.getLgaCode(coordinates, lga['geometry']['coordinates'][0][0][0])
                 print(item['place']['name'], postcode, lgaCode)
 
     # item['postcode'] = postcode
     # item['lgacode'] = lgaCode
     # tweetsSearchDB.save(item)
-
-
-
-print("finish!!!")
+#
+# for lga in lgaList:
+#     #lgaCode = getLgaFromCoordinates.getLgaCode(coordinates, lga[0][0][0])
+#     print(lga[0][0][0])
+# print("finish!!!")
