@@ -60,6 +60,8 @@ while True:
 
 items = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
 items = items[0:99]
+
+
 frequency = {}
 
 for item in items:
