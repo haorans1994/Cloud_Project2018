@@ -6,6 +6,7 @@
   }
 
   .team {
+    position: relative;
     width: 100%;
     height: 100vh;
 
@@ -15,6 +16,27 @@
       background-position: 50% 50%;
       background-size: cover;
       background-repeat: no-repeat;
+    }
+
+    .team-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      .name {
+        position: absolute;
+        color: #fff;
+        font-size: 2.5vw;
+        font-weight: 500;
+
+        .student-id {
+          margin-top: 10px;
+          font-size: 20px;
+          line-height: 20px;
+        }
+      }
     }
   }
 }
@@ -27,6 +49,27 @@
 
     .team {
       height: 54vw;
+
+      .team-overlay {
+        .name {
+          font-size: 18px;
+
+          .student-id {
+            margin-top: 5px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    .team {
+      .team-overlay {
+        display: none;
+      }
     }
   }
 }

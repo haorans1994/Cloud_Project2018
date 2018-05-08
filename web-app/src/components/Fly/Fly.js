@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Fly.css';
 
 export default class Fly extends Component {
   constructor() {
@@ -19,13 +18,19 @@ export default class Fly extends Component {
   }
 
   onScroll = () => {
+    const { speed } = this.props;
+    let factor = 5;
+    if (speed === 'slow') {
+      factor = 8;
+    } else if (speed === 'fast') {
+      factor = 3;
+    }
+    let { flyHeight } = this.state;
+    const top =
+      this.fly.current.getBoundingClientRect().top + this.fly.current.firstChild.offsetTop;
     const height = this.fly.current.firstChild.clientHeight;
-    const top = this.fly.current.offsetTop;
-    let flyHeight = 0;
-    if (window.scrollY >= top - window.innerHeight && window.scrollY < top + height) {
-      console.log(top, height, window.scrollY);
-      flyHeight = -(window.scrollY - (top - window.innerHeight)) / 4;
-      console.log(flyHeight);
+    if (top <= window.innerHeight && top >= -height) {
+      flyHeight = (window.innerHeight - top) / factor;
     }
     this.setState({ flyHeight });
   };
@@ -36,8 +41,7 @@ export default class Fly extends Component {
     return (
       <div
         ref={this.fly}
-        className="fly"
-        style={{ willChange: 'transform', transform: `translateY(${flyHeight}px)` }}
+        style={{ willChange: 'transform', transform: `translateY(-${flyHeight}px)` }}
       >
         {children}
       </div>

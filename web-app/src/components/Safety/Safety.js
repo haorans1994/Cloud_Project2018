@@ -1,26 +1,33 @@
 import React, { Component, Fragment } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import { ScenarioSafetyChart } from '../Chart';
 
 export default class Safety extends Component {
-  // componentDidMount() {
-  //   this.fetchDate();
-  // }
+  state = {
+    chartData: null
+  };
 
-  // fetchDate = () => {
-  //   const url =
-  //     'http://127.0.0.1:5984/tweets_crawler/_design/tweets_crawler/_view/melbourne_tweets';
-  //   axios
-  //     .get(url)
-  //     .then(res => {
-  //       console.log(res);
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //     });
-  // };
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = () => {
+    const url =
+      'http://127.0.0.1:5984/tweets_crawler/_design/tweets_crawler/_view/melbourne_tweets';
+    axios
+      .get(url)
+      .then(res => {
+        console.log(res);
+        const chartData = res.data;
+        this.setState({ chartData });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
 
   render() {
+    const { chartData } = this.state;
     return (
       <Fragment>
         <div className="intro">
@@ -32,7 +39,7 @@ export default class Safety extends Component {
             appliances, stairs, etc.) are safe (not dangerous or harmful) for its inhabitants.`}
           </div>
         </div>
-        <ScenarioSafetyChart />
+        <ScenarioSafetyChart data={chartData} />
       </Fragment>
     );
   }

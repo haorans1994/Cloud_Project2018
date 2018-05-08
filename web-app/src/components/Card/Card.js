@@ -19,7 +19,7 @@ export default class Card extends Component {
   constructor() {
     super();
     this.state = {
-      opacity: 0
+      opacity: 0.1
     };
     this.card = React.createRef();
   }
@@ -33,21 +33,17 @@ export default class Card extends Component {
   }
 
   onScroll = () => {
-    const cardHeight = this.card.current.offsetHeight;
-    const cardTop = this.card.current.offsetTop;
-    let opacity = 0.1;
-    if (
-      window.scrollY >= cardTop - window.innerHeight &&
-      window.scrollY < cardTop - window.innerHeight + cardHeight
-    ) {
-      opacity = Math.min(1, (window.innerHeight + window.scrollY - cardTop) / cardHeight + 0.1);
-    } else if (
-      window.scrollY >= cardTop - window.innerHeight + cardHeight &&
-      window.scrollY < cardTop + 70
-    ) {
+    let { opacity } = this.state;
+    const { top } = this.card.current.getBoundingClientRect();
+    const height = this.card.current.offsetHeight;
+    if (top < window.innerHeight && top >= window.innerHeight - height) {
+      opacity = Math.min(1, (window.innerHeight - top) / height + 0.1);
+    } else if (top < window.innerHeight - height && top >= 0) {
       opacity = 1;
-    } else if (window.scrollY >= cardTop + 70 && window.scrollY < cardTop + cardHeight) {
-      opacity = (cardHeight + cardTop + 70 - window.scrollY) / cardHeight;
+    } else if (top < 0 && top >= -height) {
+      opacity = Math.min(1, (top + height) / height + 0.1);
+    } else {
+      opacity = 0;
     }
     this.setState({ opacity });
   };
