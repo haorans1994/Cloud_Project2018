@@ -47,7 +47,7 @@ for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
         print(tweet.key, postcode, lgaCode)
     elif tweet.value[2] == 'city':
         if tweet.value[3]:
-            coordinates = [tweet.value[3]['coordinates'][0], tweet.value[3]['coordinates'][0]]
+            coordinates = [tweet.value[3]['coordinates'][0], tweet.value[3]['coordinates'][1]]
             for lga in lgaList:
                 lgaCoordinate = lga['geometry']['coordinates'][0][0]
                 contains = getLgaFromCoordinates.getLgaCode(coordinates, lgaCoordinate)
