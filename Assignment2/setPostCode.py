@@ -1,4 +1,3 @@
-import generatePostcode
 from LGA import generateLGACode
 import sys
 import couchdb.design
@@ -51,9 +50,13 @@ for tweet in tweetsSearchDB.view('_all_docs', include_docs=True).rows:
             print(item['place']['name'], postcode, lgaCode)
         elif item['place']['place_type'] == "city":
             if item['coordinates']:
-                coordinates = [item['coordinates']['coordinates'][1], item['coordinates']['coordinates'][0]]
+                coordinates = [item['coordinates']['coordinates'][0], item['coordinates']['coordinates'][1]]
                 for lga in lgaList:
-                    lgaCode = getLgaFromCoordinates.getLgaCode(coordinates, lga['geometry']['coordinates'][0][0][0])
+                    lgaCoordinate = lga['geometry']['coordinates'][0][0]
+                    contains = getLgaFromCoordinates.getLgaCode(coordinates, lgaCoordinate)
+                    if contains:
+                        lgaCode = lga['properties']['area_code']
+                        break
                 print(item['place']['name'], postcode, lgaCode)
 
     # item['postcode'] = postcode
