@@ -1,8 +1,8 @@
 import json
 
-
+codeLGA = 'LGA_code.json'
 # put a postcode to judge if it in certain LGA area and then return LGA_code
-def generateLGA_code(codeLGA, postcode):
+def generateLGA_code(postcode):
 	file = open(codeLGA, 'rb')
 	fileJson = json.load(file)
 
@@ -12,4 +12,3 @@ def generateLGA_code(codeLGA, postcode):
 		else:
 			continue
 
-codeLGA = 'LGA_code.json'

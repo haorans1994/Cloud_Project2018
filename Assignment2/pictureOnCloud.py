@@ -1,8 +1,11 @@
-from textblob import TextBlob
-import re
+import matplotlib.pyplot as plt
+import jieba
+from PIL import Image
+import numpy as np
 import json
+import re
 import nltk
-
+from wordcloud import WordCloud, ImageColorGenerator
 
 dictionary = {} #word freq
 stopWords = list(nltk.corpus.stopwords.words('english'))
@@ -16,6 +19,9 @@ for word in words:
 file.close()
 stopWords.append('AT')
 stopWords.append('URL')
+image = Image.open(r'/Users/qingqiany/PycharmProjects/cloudass2/pikacho.jpg')
+graph = np.array(image)
+
 
 f = open("tweets_crawler2.json", 'r')
 while True:
@@ -23,7 +29,6 @@ while True:
     if not line:
         break
     if "text\":\"" in line:
-
         try:
             temp1 = re.findall(r"text\":\"(.*)\"created_at\":\"", line)
             temp2 = re.findall(r"(.*)\",\"created_at\":\"", temp1[0])  # cut the "created_at" part again because it appear twice in line
@@ -35,9 +40,10 @@ while True:
         text = re.sub(r'[@][\S]*\s', ' AT ', text)  # replace the @user with at
         text = re.sub(r'((www\.[^\s]+)|(https?://[^\s]+))', ' URL ', text)  # replace the web address with url
         text = re.sub(r'#([^\s]+)', r'\1', text)  # remove the '#'
-        text = re.sub('&amp', ' ', text)  # remove the '&amp'
-        text = re.sub(r'[\s+\.\!\/_,$%^*(\"\')]+|[:+—()?【】“”！，。？、~@#￥%…&*（）\\’|;-]+', ' ', text)
+        text = re.sub('&amp', ' ', text) # remove the '&amp'
+        text = re.sub(r'[\s+\.\!\/_,$%^*(\"\')]+|[:+—()?【】“”！，。？、~@#￥%…&*（）\\’|;-]+',' ',text)
         text = re.sub('[\s]+', ' ', text)
+
         #text = re.sub(r'[^A-Za-z0-9_\s]', '', text)
         freq = nltk.FreqDist(text.split(' '))
         for localKey in freq.keys():
@@ -48,5 +54,13 @@ while True:
             else:
                 dictionary[localKey] = freq[localKey]
 
-print(sorted(dictionary.items(), key = lambda  x:x[1], reverse = True))
+words = sorted(dictionary.items(), key = lambda  x:x[1], reverse = True)
+words = words[1:1000]
+result = {}
+for word in words:
+    result[word[0]] = word[1]
+wc = WordCloud(background_color='white',max_font_size=50,mask=graph).fit_words(result)
 
+imageColor = ImageColorGenerator(graph)
+wc.recolor(color_func=imageColor)
+wc.to_file(r"/Users/qingqiany/PycharmProjects/cloudass2/wordcloud1.png")

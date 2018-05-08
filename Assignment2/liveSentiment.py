@@ -12,7 +12,7 @@ def judge_sentiment(text):
         text1 = re.sub('_', ' ', text1)  # remove the '_'
         text1 = re.sub(':', ' ', text1)  # remove the ':'
         text1 = re.sub('[\s]+', ' ', text1)  # remove the duplicate space
-        correct = TextBlob(text1) # correct the text spell error
+        correct = TextBlob(text1).correct()  # correct the text spell error
         sentiment = correct.sentiment
         if sentiment[0] < 0:
                 tag = 'negative'
@@ -21,5 +21,5 @@ def judge_sentiment(text):
         else:
                 tag = 'neutral'
         return tag
-# tag = judge_sentiment("When you’re low on policies- try to scare everyone - Matthew Guy is a one trick pony https://t.co/5lMAhZlut")
-# print(tag)
+tag = judge_sentiment("Facebook you CUNTS...bar me for sharing some FUCKING post! I only SHARED the FUCKING thing so why have you CUNTS st… https://t.co/0kfCQW38j")
+print(tag)
