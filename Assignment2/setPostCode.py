@@ -2,6 +2,9 @@ import generatePostcode
 from LGA import generateLGACode
 import sys
 import couchdb.design
+import getPostCode
+import json
+import getLgaFromCoordinates
 
 
 AUS_GEO_CODE = [113.03, -39.06, 154.73, -12.28]
@@ -33,24 +36,30 @@ except couchdb.ResourceNotFound:
 #             postcode = generatePostcode.getPostCode_coord(coordinates)
 #             lgaCode = generateLGACode.generateLGA_code(postcode)
 #             print(tweet.key, postcode, lgaCode)
+lga_file = open("LGAcode.json").read()
+lga_file = json.loads(lga_file)
+lgaList = lga_file['features']
 
 for tweet in tweetsSearchDB.view('_all_docs', include_docs=True).rows:
     postcode = None
     lgaCode = None
-    item = tweetsSearchDB.get(tweet['id'])
+    item = tweet.doc
     if item['place']:
         if item['place']['place_type'] == "neighborhood":
-            postcode = generatePostcode.getPostCode_suburb(item['place']['name'])
+            postcode = getPostCode.getPostcode(item['place']['name'])
             lgaCode = generateLGACode.generateLGA_code(postcode)
             print(item['place']['name'], postcode, lgaCode)
         elif item['place']['place_type'] == "city":
             if item['coordinates']:
                 coordinates = [item['coordinates']['coordinates'][1], item['coordinates']['coordinates'][0]]
-                postcode = generatePostcode.getPostCode_coord(coordinates)
-                lgaCode = generateLGACode.generateLGA_code(postcode)
+                for lga in lgaList:
+                    lgaCode = getLgaFromCoordinates.getLgaCode(coordinates, lga[0][0][0])
                 print(item['place']['name'], postcode, lgaCode)
 
-    item['postcode'] = postcode
-    item['lagcode'] = lgaCode
-    tweetsSearchDB.save(item)
+    # item['postcode'] = postcode
+    # item['lgacode'] = lgaCode
+    # tweetsSearchDB.save(item)
 
+
+
+print("finish!!!")

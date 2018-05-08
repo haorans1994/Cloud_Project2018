@@ -33,11 +33,11 @@ except couchdb.ResourceNotFound:
     sys.exit()
 
 
-dictionary = {} #word freq
+dictionary = {} #tag freq
 
 while True:
-    for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
-        text = tweet.value[0]
+    for tweet in tweetsSearchDB.view('tweets_search/sydney_tweets'):
+        text = tweet.value[0].lower()
         tags = re.findall(r'#([^\s]+)', text)
         for tag in tags:
             if tag in dictionary.keys():
@@ -54,7 +54,7 @@ frequency = {}
 for item in tags:
     frequency[item[0]] = item[1]
 
-words = {"place": "Melbourne", "freq": frequency}
+words = {"place": "Sydney", "freq": frequency}
 str = json.dumps(words)
 tweetsFrequencyDB.save(json.loads(str))
 
