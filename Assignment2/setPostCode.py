@@ -43,21 +43,24 @@ for tweet in tweetsSearchDB.view('_all_docs', include_docs=True).rows:
     postcode = None
     lgaCode = None
     item = tweet.doc
-    if item['place']:
-        if item['place']['place_type'] == "neighborhood":
-            postcode = getPostCode.getPostcode(item['place']['name'])
-            lgaCode = generateLGACode.generateLGA_code(postcode)
-            print(item['place']['name'], postcode, lgaCode)
-        elif item['place']['place_type'] == "city":
-            if item['coordinates']:
-                coordinates = [item['coordinates']['coordinates'][0], item['coordinates']['coordinates'][1]]
-                for lga in lgaList:
-                    lgaCoordinate = lga['geometry']['coordinates'][0][0]
-                    contains = getLgaFromCoordinates.getLgaCode(coordinates, lgaCoordinate)
-                    if contains:
-                        lgaCode = lga['properties']['area_code']
-                        break
-                print(item['place']['name'], postcode, lgaCode)
+    if 'place' in item:
+        place = item['place']
+        if place['place_type'] != None:
+            if place['place_type'] == "neighborhood":
+                postcode = getPostCode.getPostcode(place['name'])
+                lgaCode = generateLGACode.generateLGA_code(str(postcode))
+                print(place['name'], postcode, lgaCode)
+            # elif place['place_type'] == "city":
+            #     if item['coordinates']:
+            #         coordinates = [item['coordinates']['coordinates'][0], item['coordinates']['coordinates'][1]]
+            #         for lga in lgaList:
+            #             lgaCoordinate = lga['geometry']['coordinates'][0][0]
+            #             contains = getLgaFromCoordinates.getLgaCode(coordinates, lgaCoordinate)
+            #             if contains:
+            #                 lgaCode = lga['properties']['area_code']
+            #                 break
+            #         print(place['name'], postcode, lgaCode)
+
 
     # item['postcode'] = postcode
     # item['lgacode'] = lgaCode
