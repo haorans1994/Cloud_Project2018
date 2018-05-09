@@ -23,19 +23,13 @@ except couchdb.ResourceNotFound:
     print("Cannot find the database1 ... Exiting\n")
     sys.exit()
 
+try:
+    tweetsMelbourne = client['tweets_melbourne']
+except couchdb.ResourceNotFound:
+    print("Cannot find the database1 ... Exiting\n")
+    sys.exit()
 
-# for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
-#     if tweet.value[2] == "neighborhood":
-#         postcode = generatePostcode.getPostCode_suburb(tweet.key)
-#         lgaCode = generateLGACode.generateLGA_code(postcode)
-#         print(tweet.key, postcode, lgaCode)
-#     elif tweet.value[2] == "city":
-#         if tweet.value[3]:
-#             coordinates = [tweet.value[3]['coordinates'][1], tweet.value[3]['coordinates'][0]]
-#             postcode = generatePostcode.getPostCode_coord(coordinates)
-#             lgaCode = generateLGACode.generateLGA_code(postcode)
-#             print(tweet.key, postcode, lgaCode)
-lga_file = open("LGAcode.json").read()
+lga_file = open("Aurin/LGA_mel.json").read()
 lga_file = json.loads(lga_file)
 lgaList = lga_file['features']
 for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
@@ -44,26 +38,17 @@ for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
     if tweet.value[2] == "neighborhood":
         postcode = getPostCode.getPostcode(tweet.key)
         lgaCode = generateLGACode.generateLGA_code(str(postcode))
-        print(tweet.key, postcode, lgaCode)
     elif tweet.value[2] == 'city':
         if tweet.value[3]:
             coordinates = [tweet.value[3]['coordinates'][0], tweet.value[3]['coordinates'][1]]
+            i = 0
             for lga in lgaList:
                 lgaCoordinate = lga['geometry']['coordinates'][0][0]
                 contains = getLgaFromCoordinates.getLgaCode(coordinates, lgaCoordinate)
                 if contains:
                     lgaCode = lga['properties']['area_code']
                     break
-            print(tweet.key, coordinates, postcode, lgaCode)
 
-
-
-
-        # item['postcode'] = postcode
-    # item['lgacode'] = lgaCode
-    # tweetsSearchDB.save(item)
-#
-# for lga in lgaList:
-#     #lgaCode = getLgaFromCoordinates.getLgaCode(coordinates, lga[0][0][0])
-#     print(lga[0][0][0])
-# print("finish!!!")
+    result = {'text' : tweet.value[0], 'sentiment': tweet.value[1], 'LgaCode': lgaCode, 'postcode': postcode, 'place_name': tweet.key}
+    str = json.dumps(result)
+    tweetsMelbourne.save(json.loads(str))
