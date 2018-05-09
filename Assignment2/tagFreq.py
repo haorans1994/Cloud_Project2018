@@ -34,11 +34,13 @@ except couchdb.ResourceNotFound:
 
 
 dictionary = {} #tag freq
-
+int i = 0
 while True:
     for tweet in tweetsSearchDB.view('tweets_search/sydney_tweets'):
+        i = i + 1
         text = tweet.value[0].lower()
         tags = re.findall(r'#([^\s]+)', text)
+        print(i)
         for tag in tags:
             if tag in dictionary.keys():
                 dictionary[tag] = dictionary[tag] + 1
