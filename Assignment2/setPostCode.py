@@ -48,7 +48,7 @@ for tweet in tweetsSearchDB.view('tweets_search/melbourne_tweets'):
                 if contains:
                     lgaCode = lga['properties']['area_code']
                     break
-
     result = {'text' : tweet.value[0], 'sentiment': tweet.value[1], 'LgaCode': lgaCode, 'postcode': postcode, 'place_name': tweet.key}
-    str = json.dumps(result)
-    tweetsMelbourne.save(json.loads(str))
+    # strs = json.dumps(result)
+    # tweetsMelbourne.save(json.loads(strs))
+    print(result)
