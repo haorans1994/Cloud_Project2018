@@ -2,6 +2,37 @@ from textblob import TextBlob
 import re
 import json
 import nltk
+import sys
+import couchdb
+
+AUS_GEO_CODE = [113.03, -39.06, 154.73, -12.28]
+USER_NAME = "assignment2"
+PASSWORD = "3010"
+HOST_NAME = "127.0.0.1"
+
+try:
+    client = couchdb.Server('http://%s:%s@%s:5984' % (USER_NAME, PASSWORD, HOST_NAME))
+except couchdb.ServerError:
+    print("Cannot find CouchDB Server ... Exiting\n")
+    sys.exit()
+
+try:
+    tweetsDB = client['tweets_crawler']
+except couchdb.ResourceNotFound:
+    print("Cannot find the database ... Exiting\n")
+    sys.exit()
+
+try:
+    tweetsSearchDB = client['tweets_search']
+except couchdb.ResourceNotFound:
+    print("Cannot find the database1 ... Exiting\n")
+    sys.exit()
+
+try:
+    tweetsFrequencyDB = client['tweets_frequency_words']
+except couchdb.ResourceNotFound:
+    print("Cannot find the database1 ... Exiting\n")
+    sys.exit()
 
 
 dictionary = {} #word freq
@@ -17,21 +48,9 @@ file.close()
 stopWords.append('AT')
 stopWords.append('URL')
 
-f = open("tweets_crawler2.json", 'r')
 while True:
-    line = f.readline()
-    if not line:
-        break
-    if "text\":\"" in line:
-
-        try:
-            temp1 = re.findall(r"text\":\"(.*)\"created_at\":\"", line)
-            temp2 = re.findall(r"(.*)\",\"created_at\":\"", temp1[0])  # cut the "created_at" part again because it appear twice in line
-            # temp3 = emoji.demojize(temp2[0])
-            text = temp2[0].lower()  # to lower case
-        except IndexError:
-            continue
-
+    for tweet in tweetsSearchDB.view('tweets_search/sydney_tweets'):
+        text = tweet.value[0].lower()
         text = re.sub(r'[@][\S]*\s', ' AT ', text)  # replace the @user with at
         text = re.sub(r'((www\.[^\s]+)|(https?://[^\s]+))', ' URL ', text)  # replace the web address with url
         text = re.sub(r'#([^\s]+)', r'\1', text)  # remove the '#'
@@ -47,6 +66,18 @@ while True:
                 dictionary[localKey] = dictionary[localKey] + freq[localKey]
             else:
                 dictionary[localKey] = freq[localKey]
+    break
 
-print(sorted(dictionary.items(), key = lambda  x:x[1], reverse = True))
+freq = (sorted(dictionary.items(), key = lambda  x:x[1], reverse = True))
+freq = freq[0:99]
+
+frequency = {}
+
+for item in freq:
+    frequency[item[0]] = item[1]
+
+words = {"place": "Sydney", "freq": frequency}
+str = json.dumps(words)
+tweetsFrequencyDB.save(json.loads(str))
+
 
