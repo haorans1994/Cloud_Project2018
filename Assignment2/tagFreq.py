@@ -34,7 +34,7 @@ except couchdb.ResourceNotFound:
 
 
 dictionary = {} #tag freq
-int i = 0
+i = 0
 while True:
     for tweet in tweetsSearchDB.view('tweets_search/sydney_tweets'):
         i = i + 1
