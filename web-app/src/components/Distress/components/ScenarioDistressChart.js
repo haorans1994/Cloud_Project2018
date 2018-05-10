@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import dataChartJson from './data/data_chart.json';
 
-export default class ScenarioSafetyChart extends Component {
+export default class ScenarioDistressChart extends Component {
   static propTypes = {
     height: PropTypes.number
   };
-
   static defaultProps = {
     height: 600
   };
 
   render() {
     const { height, data } = this.props;
-    const dataChart = data || dataChartJson;
-    const dataDay = dataChart.DayTime.map(obj => [obj.positive, obj.safety]);
-    const dataNight = dataChart.NightTime.map(obj => [obj.positive, obj.safety]);
+    const dataMel = data.Mel.map(obj => [obj.positive, obj.distress]);
+    const dataSyd = data.Syd.map(obj => [obj.positive, obj.distress]);
+    const dataPerth = data.Perth.map(obj => [obj.positive, obj.distress]);
+
     const options = {
       title: {
-        text: 'Safety Rate',
+        text: 'Psychological Distress Rate',
         subtext: 'Consistency with Positive Rate'
       },
       grid: {
@@ -56,13 +55,13 @@ export default class ScenarioSafetyChart extends Component {
       // },
       // brush: {},
       legend: {
-        data: ['NightTime', 'DayTime'],
+        data: ['Melbourne', 'Sydney', 'Perth'],
         left: 'center'
       },
       xAxis: [
         {
           name: 'Positive Rate',
-          nameGap: '25',
+          nameGap: 27,
           nameLocation: 'center',
           type: 'value',
           scale: true,
@@ -76,9 +75,9 @@ export default class ScenarioSafetyChart extends Component {
       ],
       yAxis: [
         {
-          name: 'Safety Rate',
+          name: 'Distress Rate',
           nameLocation: 'center',
-          nameGap: 55,
+          nameGap: 50,
           type: 'value',
           scale: true,
           axisLabel: {
@@ -91,11 +90,11 @@ export default class ScenarioSafetyChart extends Component {
       ],
       series: [
         {
-          name: 'NightTime',
+          name: 'Melbourne',
           type: 'scatter',
-          data: dataNight,
+          data: dataMel,
           itemStyle: {
-            color: '#333333'
+            color: '#f1c400'
           },
           markArea: {
             silent: true,
@@ -109,7 +108,7 @@ export default class ScenarioSafetyChart extends Component {
             data: [
               [
                 {
-                  name: 'NightTime Distribution',
+                  name: 'Melbourne Distribution',
                   xAxis: 'min',
                   yAxis: 'min'
                 },
@@ -125,9 +124,9 @@ export default class ScenarioSafetyChart extends Component {
           }
         },
         {
-          name: 'DayTime',
+          name: 'Sydney',
           type: 'scatter',
-          data: dataDay,
+          data: dataSyd,
           markArea: {
             silent: true,
             itemStyle: {
@@ -140,7 +139,7 @@ export default class ScenarioSafetyChart extends Component {
             data: [
               [
                 {
-                  name: 'DayTime Distribution',
+                  name: 'Sydney Distribution',
                   xAxis: 'min',
                   yAxis: 'min'
                 },
@@ -154,10 +153,43 @@ export default class ScenarioSafetyChart extends Component {
           markPoint: {
             data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'minimum' }]
           }
+        },
+        {
+          name: 'Perth',
+          type: 'scatter',
+          data: dataPerth,
+          itemStyle: {
+            color: '#003399'
+          },
+          markArea: {
+            silent: true,
+            itemStyle: {
+              normal: {
+                color: 'transparent',
+                borderWidth: 1,
+                borderType: 'dashed'
+              }
+            },
+            data: [
+              [
+                {
+                  name: 'Perth Distribution',
+                  xAxis: 'min',
+                  yAxis: 'min'
+                },
+                {
+                  xAxis: 'max',
+                  yAxis: 'max'
+                }
+              ]
+            ]
+          },
+          markPoint: {
+            data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'Minimum' }]
+          }
         }
       ]
     };
-
     return (
       <ReactEcharts
         option={options}
