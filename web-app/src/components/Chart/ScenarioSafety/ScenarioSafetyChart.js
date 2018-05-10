@@ -46,21 +46,24 @@ export default class ScenarioSafetyChart extends Component {
           }
         }
       },
-      toolbox: {
-        feature: {
-          dataZoom: {},
-          brush: {
-            type: ['rect', 'polygon', 'clear']
-          }
-        }
-      },
-      brush: {},
+      // toolbox: {
+      //   feature: {
+      //     dataZoom: {},
+      //     brush: {
+      //       type: ['rect', 'polygon', 'clear']
+      //     }
+      //   }
+      // },
+      // brush: {},
       legend: {
         data: ['NightTime', 'DayTime'],
         left: 'center'
       },
       xAxis: [
         {
+          name: 'Positive Rate',
+          nameGap: '25',
+          nameLocation: 'center',
           type: 'value',
           scale: true,
           axisLabel: {
@@ -73,6 +76,9 @@ export default class ScenarioSafetyChart extends Component {
       ],
       yAxis: [
         {
+          name: 'Safety Rate',
+          nameLocation: 'center',
+          nameGap: 55,
           type: 'value',
           scale: true,
           axisLabel: {
