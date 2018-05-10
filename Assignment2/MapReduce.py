@@ -52,6 +52,5 @@ class MyMapView(object):
         print("Create map view indexes!")
         self.create_view()
 
-
 x = MyMapView()
 x.run()
