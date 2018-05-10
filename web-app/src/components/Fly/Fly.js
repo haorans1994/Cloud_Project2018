@@ -18,21 +18,23 @@ export default class Fly extends Component {
   }
 
   onScroll = () => {
-    const { speed } = this.props;
-    let factor = 5;
-    if (speed === 'slow') {
-      factor = 8;
-    } else if (speed === 'fast') {
-      factor = 3;
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      const { speed } = this.props;
+      let factor = 5;
+      if (speed === 'slow') {
+        factor = 8;
+      } else if (speed === 'fast') {
+        factor = 3;
+      }
+      let { flyHeight } = this.state;
+      const top =
+        this.fly.current.getBoundingClientRect().top + this.fly.current.firstChild.offsetTop;
+      const height = this.fly.current.firstChild.clientHeight;
+      if (top <= window.innerHeight && top >= -height) {
+        flyHeight = (window.innerHeight - top) / factor;
+      }
+      this.setState({ flyHeight });
     }
-    let { flyHeight } = this.state;
-    const top =
-      this.fly.current.getBoundingClientRect().top + this.fly.current.firstChild.offsetTop;
-    const height = this.fly.current.firstChild.clientHeight;
-    if (top <= window.innerHeight && top >= -height) {
-      flyHeight = (window.innerHeight - top) / factor;
-    }
-    this.setState({ flyHeight });
   };
 
   render() {
@@ -41,7 +43,11 @@ export default class Fly extends Component {
     return (
       <div
         ref={this.fly}
-        style={{ willChange: 'transform', transform: `translateY(-${flyHeight}px)` }}
+        style={{
+          position: 'relative',
+          willChange: 'transform',
+          transform: `translateY(-${flyHeight}px)`
+        }}
       >
         {children}
       </div>

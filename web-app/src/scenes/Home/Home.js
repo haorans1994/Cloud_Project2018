@@ -12,7 +12,7 @@ export default class Home extends Component {
         <Cover />
         <h1 className="title">Scenarios</h1>
         <ScenarioList />
-        <div className="team-title">Team</div>
+        <h1 className="title">Team</h1>
         <div className="team">
           <div className="team-img" style={{ backgroundImage: `url(${teamImg})` }} />
           <div className="team-overlay">
