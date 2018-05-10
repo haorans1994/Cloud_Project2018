@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import dataChart from './data/data_chart.json';
 
 export default class ScenarioSittingChart extends Component {
   static propTypes = {
@@ -13,8 +12,7 @@ export default class ScenarioSittingChart extends Component {
   };
 
   render() {
-    const { height } = this.props;
-    const data = dataChart;
+    const { height, data } = this.props;
     const options = {
       tooltip: {
         trigger: 'item',
@@ -28,9 +26,7 @@ export default class ScenarioSittingChart extends Component {
           left: '7%',
           bottom: '1%',
           right: '20%',
-
           symbolSize: 8,
-
           label: {
             normal: {
               position: 'left',
@@ -39,7 +35,6 @@ export default class ScenarioSittingChart extends Component {
               fontSize: 15
             }
           },
-
           leaves: {
             label: {
               normal: {
@@ -49,7 +44,6 @@ export default class ScenarioSittingChart extends Component {
               }
             }
           },
-
           expandAndCollapse: true,
           animationDuration: 550,
           animationDurationUpdate: 750

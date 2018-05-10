@@ -53,7 +53,7 @@ export default class ScenarioList extends Component {
           <Fly speed="fast">
             <Card
               image={imgScenarioSydmel}
-              title="AUS-City"
+              title="AUS City"
               titlePosition="right"
               className="fifth-scenario"
             />

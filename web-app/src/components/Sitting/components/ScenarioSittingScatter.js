@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import dataChartJson from './data/data_chart.json';
 
-export default class ScenarioDistressChart extends Component {
+export default class ScenarioSittingChart extends Component {
   static propTypes = {
     height: PropTypes.number
   };
+
   static defaultProps = {
     height: 600
   };
 
   render() {
     const { height, data } = this.props;
-    const dataChart = data || dataChartJson;
-    const dataMel = dataChart.Mel.map(obj => [obj.positive, obj.distress]);
-    const dataSyd = dataChart.Syd.map(obj => [obj.positive, obj.distress]);
-    const dataPerth = dataChart.Perth.map(obj => [obj.positive, obj.distress]);
-
+    const dataSitting = data.Sitting.map(obj => [obj.positive, obj.sitting]);
     const options = {
       title: {
-        text: 'Psychological Distress Rate',
+        text: 'Sitting Rate',
         subtext: 'Consistency with Positive Rate'
       },
       grid: {
@@ -57,13 +53,13 @@ export default class ScenarioDistressChart extends Component {
       // },
       // brush: {},
       legend: {
-        data: ['Melbourne', 'Sydney', 'Perth'],
+        data: ['Sitting over 7 hours per day'],
         left: 'center'
       },
       xAxis: [
         {
           name: 'Positive Rate',
-          nameGap: 27,
+          nameGap: '25',
           nameLocation: 'center',
           type: 'value',
           scale: true,
@@ -77,9 +73,9 @@ export default class ScenarioDistressChart extends Component {
       ],
       yAxis: [
         {
-          name: 'Distress Rate',
+          name: 'Sitting Rate',
           nameLocation: 'center',
-          nameGap: 50,
+          nameGap: 55,
           type: 'value',
           scale: true,
           axisLabel: {
@@ -92,11 +88,11 @@ export default class ScenarioDistressChart extends Component {
       ],
       series: [
         {
-          name: 'Melbourne',
+          name: 'Sitting Over 7 Hours per Day',
           type: 'scatter',
-          data: dataMel,
+          data: dataSitting,
           itemStyle: {
-            color: '#f1c400'
+            color: '#333333'
           },
           markArea: {
             silent: true,
@@ -110,72 +106,7 @@ export default class ScenarioDistressChart extends Component {
             data: [
               [
                 {
-                  name: 'Melbourne Distribution',
-                  xAxis: 'min',
-                  yAxis: 'min'
-                },
-                {
-                  xAxis: 'max',
-                  yAxis: 'max'
-                }
-              ]
-            ]
-          },
-          markPoint: {
-            data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'Minimum' }]
-          }
-        },
-        {
-          name: 'Sydney',
-          type: 'scatter',
-          data: dataSyd,
-          markArea: {
-            silent: true,
-            itemStyle: {
-              normal: {
-                color: 'transparent',
-                borderWidth: 1,
-                borderType: 'dashed'
-              }
-            },
-            data: [
-              [
-                {
-                  name: 'Sydney Distribution',
-                  xAxis: 'min',
-                  yAxis: 'min'
-                },
-                {
-                  xAxis: 'max',
-                  yAxis: 'max'
-                }
-              ]
-            ]
-          },
-          markPoint: {
-            data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'minimum' }]
-          }
-        },
-        {
-          name: 'Perth',
-          type: 'scatter',
-          data: dataPerth,
-          itemStyle: {
-            color: '#003399'
-          },
-          markArea: {
-            silent: true,
-            itemStyle: {
-              normal: {
-                color: 'transparent',
-                borderWidth: 1,
-                borderType: 'dashed'
-              }
-            },
-            data: [
-              [
-                {
-                  name: 'Perth Distribution',
+                  name: 'Sitting Rate Distribution',
                   xAxis: 'min',
                   yAxis: 'min'
                 },
@@ -190,8 +121,40 @@ export default class ScenarioDistressChart extends Component {
             data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'Minimum' }]
           }
         }
+        // {
+        //   name: 'DayTime',
+        //   type: 'scatter',
+        //   data: dataSitting,
+        //   markArea: {
+        //     silent: true,
+        //     itemStyle: {
+        //       normal: {
+        //         color: 'transparent',
+        //         borderWidth: 1,
+        //         borderType: 'dashed'
+        //       }
+        //     },
+        //     data: [
+        //       [
+        //         {
+        //           name: 'DayTime Distribution',
+        //           xAxis: 'min',
+        //           yAxis: 'min'
+        //         },
+        //         {
+        //           xAxis: 'max',
+        //           yAxis: 'max'
+        //         }
+        //       ]
+        //     ]
+        //   },
+        //   markPoint: {
+        //     data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'minimum' }]
+        //   }
+        // }
       ]
     };
+
     return (
       <ReactEcharts
         option={options}

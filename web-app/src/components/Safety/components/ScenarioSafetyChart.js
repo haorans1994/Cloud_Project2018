@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import dataChartJson from './data/data_scatter.json';
 
-export default class ScenarioSittingChart extends Component {
+export default class ScenarioSafetyChart extends Component {
   static propTypes = {
     height: PropTypes.number
   };
@@ -14,12 +13,11 @@ export default class ScenarioSittingChart extends Component {
 
   render() {
     const { height, data } = this.props;
-    const dataChart = data || dataChartJson;
-    const dataSitting = dataChart.Sitting.map(obj => [obj.positive, obj.sitting]);
-    console.log(dataSitting);
+    const dataDay = data.DayTime.map(obj => [obj.positive, obj.safety]);
+    const dataNight = data.NightTime.map(obj => [obj.positive, obj.safety]);
     const options = {
       title: {
-        text: 'Sitting Rate',
+        text: 'Safety Rate',
         subtext: 'Consistency with Positive Rate'
       },
       grid: {
@@ -56,7 +54,7 @@ export default class ScenarioSittingChart extends Component {
       // },
       // brush: {},
       legend: {
-        data: ['Sitting over 7 hours per day'],
+        data: ['NightTime', 'DayTime'],
         left: 'center'
       },
       xAxis: [
@@ -76,7 +74,7 @@ export default class ScenarioSittingChart extends Component {
       ],
       yAxis: [
         {
-          name: 'Sitting Rate',
+          name: 'Safety Rate',
           nameLocation: 'center',
           nameGap: 55,
           type: 'value',
@@ -91,9 +89,9 @@ export default class ScenarioSittingChart extends Component {
       ],
       series: [
         {
-          name: 'Sitting Over 7 Hours per Day',
+          name: 'NightTime',
           type: 'scatter',
-          data: dataSitting,
+          data: dataNight,
           itemStyle: {
             color: '#333333'
           },
@@ -109,7 +107,7 @@ export default class ScenarioSittingChart extends Component {
             data: [
               [
                 {
-                  name: 'Sitting Rate Distribution',
+                  name: 'NightTime Distribution',
                   xAxis: 'min',
                   yAxis: 'min'
                 },
@@ -123,38 +121,38 @@ export default class ScenarioSittingChart extends Component {
           markPoint: {
             data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'Minimum' }]
           }
+        },
+        {
+          name: 'DayTime',
+          type: 'scatter',
+          data: dataDay,
+          markArea: {
+            silent: true,
+            itemStyle: {
+              normal: {
+                color: 'transparent',
+                borderWidth: 1,
+                borderType: 'dashed'
+              }
+            },
+            data: [
+              [
+                {
+                  name: 'DayTime Distribution',
+                  xAxis: 'min',
+                  yAxis: 'min'
+                },
+                {
+                  xAxis: 'max',
+                  yAxis: 'max'
+                }
+              ]
+            ]
+          },
+          markPoint: {
+            data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'minimum' }]
+          }
         }
-        // {
-        //   name: 'DayTime',
-        //   type: 'scatter',
-        //   data: dataSitting,
-        //   markArea: {
-        //     silent: true,
-        //     itemStyle: {
-        //       normal: {
-        //         color: 'transparent',
-        //         borderWidth: 1,
-        //         borderType: 'dashed'
-        //       }
-        //     },
-        //     data: [
-        //       [
-        //         {
-        //           name: 'DayTime Distribution',
-        //           xAxis: 'min',
-        //           yAxis: 'min'
-        //         },
-        //         {
-        //           xAxis: 'max',
-        //           yAxis: 'max'
-        //         }
-        //       ]
-        //     ]
-        //   },
-        //   markPoint: {
-        //     data: [{ type: 'max', name: 'Maximum' }, { type: 'min', name: 'minimum' }]
-        //   }
-        // }
       ]
     };
 

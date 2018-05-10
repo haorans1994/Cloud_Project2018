@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import dataChart from './data/data_rain_chart.json';
 
 export default class ScenarioWeatherWindChart extends Component {
   static propTypes = {
@@ -13,8 +12,7 @@ export default class ScenarioWeatherWindChart extends Component {
   };
 
   render() {
-    const { height } = this.props;
-    const data = dataChart.positive;
+    const { height, data } = this.props;
     const colors = ['#5793f3', '#d14a61', '#675bba'];
     const options = {
       color: colors,
@@ -25,7 +23,7 @@ export default class ScenarioWeatherWindChart extends Component {
         }
       },
       legend: {
-        data: ['Rain', 'Positive Rate']
+        data: ['Max Wind Gust', 'Positive Rate']
       },
       grid: {
         top: 70,
@@ -51,15 +49,7 @@ export default class ScenarioWeatherWindChart extends Component {
                 }`
             }
           },
-          data: [
-            '2018/4/24',
-            '2018/4/25',
-            '2018/4/26',
-            '2018/4/27',
-            '2018/4/28',
-            '2018/4/29',
-            '2018/4/30'
-          ]
+          data: ['2018/5/1', '2018/5/2', '2018/5/3', '2018/5/4', '2018/5/5', '2018/5/6', '2018/5/7']
         },
         {
           type: 'category',
@@ -89,17 +79,17 @@ export default class ScenarioWeatherWindChart extends Component {
       ],
       series: [
         {
-          name: 'Rain',
+          name: 'Max Wind Gust',
           type: 'line',
           xAxisIndex: 1,
           smooth: true,
-          data: [0, 0, 0, 0.6, 6.2, 0.8, 11]
+          data: [22, 24, 37, 70, 30, 22, 41]
         },
         {
           name: 'Positive Rate',
           type: 'line',
           smooth: true,
-          data
+          data: data.positive
         }
       ]
     };

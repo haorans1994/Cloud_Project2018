@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
-import dataChart from './data/data_chart.json';
 
 export default class ScenarioCityChart extends Component {
   static propTypes = {
@@ -13,9 +12,12 @@ export default class ScenarioCityChart extends Component {
   };
 
   render() {
-    const { height } = this.props;
-    const data = dataChart;
+    const { height, data } = this.props;
     const options = {
+      title: {
+        show: true,
+        text: 'High-frequency Words in Tweets of 3 Australian Cities'
+      },
       tooltip: {
         trigger: 'item',
         triggerOn: 'mousemove'

@@ -9,7 +9,7 @@ export default class Cover extends Component {
         <div className="cover-img" style={{ backgroundImage: `url(${coverImg})` }}>
           <div className="cover-title">
             COMP90024<br />
-            Cloud<br />
+            Cloud Computing<br />
             Assignment 2
           </div>
         </div>
