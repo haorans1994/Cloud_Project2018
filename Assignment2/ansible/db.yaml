@@ -1,0 +1,108 @@
+- hosts: database
+  remote_user: root
+  become: yes
+  become_user: root
+  vars:
+    http_port: 80
+    NODEJS_VERSION: '8'
+    ansible_distribution_release: 'xenial'
+  tasks:
+  - name: Delete the lock files
+    file:
+      state: absent
+      path: /var/lib/dpkg/lock
+
+  - name: Force package to reconfigure
+    command: sudo dpkg --configure -a
+
+  - name: Update apt packages
+    apt: 
+      update_cache: yes
+
+  # Mount volume under root
+  - name: create a directory
+    file: path=/node_database state=directory
+
+  - name: format disk as ext4
+    filesystem:
+      fstype: ext4
+      dev: /dev/vdc
+
+  - name: mount volume
+    mount: name=/node_database/ src=/dev/vdc fstype=ext4 state=mounted
+
+  # Install pip and packages
+  - name: Install pip
+    command: sudo apt-get install -y python-pip
+
+  - name: Install pip3
+    command: sudo apt-get install -y python3-pip
+
+  - name: Install tweepy package in pip
+    command: sudo pip install tweepy
+
+  - name: Install tweepy package in pip3
+    command: sudo pip3 install tweepy
+
+  - name: Install couchdb package in pip
+    command: sudo pip install couchdb
+
+  - name: Install couchdb package in pip3
+    command: sudo pip3 install couchdb
+
+  # Install git
+  - name: Install git
+    command: sudo apt install git -y
+
+  # Install couchdb
+  - name: create a installation directory
+    file: path=/node_database/installation state=directory
+
+  - name: Change the authority
+    command: sudo chmod -R ugo+rwx /node_database
+
+  - name: Get Couchdb.sh
+    command: wget https://raw.githubusercontent.com/afiskon/install-couchdb/master/install-couchdb.sh
+    args:
+      chdir: /node_database/installation/
+
+  - name: Install couchdb
+    command: sh install-couchdb.sh
+    args:
+        chdir: /node_database/installation/
+
+  # couchdb configuration
+  - name: create a database directory
+    file: path=/node_database/database state=directory
+
+  - name: create a view directory
+    file: path=/node_database/view state=directory
+
+  - name: set view directory
+    lineinfile:
+      path: /home/couchdb/etc/local.ini
+      insertafter: '^uuid ='
+      line: "database_dir = /node_database/database\nview_dir = /node_database/view"
+
+  - name: change owner of couchdb
+    file:
+      recurse: yes
+      path: /node_database/database
+      owner: couchdb
+      group: couchdb
+
+  - name: stop couchdb
+    command: sudo sv stop couchdb
+
+  - name: start couchdb
+    command: sudo sv start couchdb
+
+  - name: bind to 0.0.0.0
+    uri:
+      url: http://127.0.0.1:5984/_cluster_setup
+      method: POST
+      body: '{"action":"enable_cluster","bind_address":"0.0.0.0","username":"assignment2","password":"3010","node_count":"1"}'
+      headers: 
+        Content-Type: "application/json"
+      status_code: 201
+
