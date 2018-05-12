@@ -44,7 +44,7 @@ class TwitterGrabe(object):
         info = collect_info()
         self.auth = tweepy.OAuthHandler(info['consumer_key'], info['consumer_secret'])
         self.auth.set_access_token(info["access_token"], info["access_token_secret"])
-        self.api = tweepy.API(self.auth)
+        self.api = tweepy.API(self.auth,wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
     def run(self):
         myStreamListener = MyStreamListener()
@@ -87,7 +87,7 @@ class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         """ you can set DB store part here. ot outside"""
         json = import_simplejson()
-        str = tweet_simplify(status)
+        str = tweet_analyses(status)
         tweetsDB.save(json.loads(str))
 
     def on_error(self, status):
@@ -105,7 +105,7 @@ class MyStreamListener(tweepy.StreamListener):
 #get twitter authorization info
 def collect_info():
     try:
-        infoDB = client['twitter_api_authorization']
+        infoDB = client['tweets_api_authorization']
     except couchdb.ResourceNotFound:
         print("Cannot find the database ... Exiting\n")
         sys.exit()
@@ -116,12 +116,12 @@ def collect_info():
 def tweet_save(search):
     for tweet in search:
         json = import_simplejson()
-        str = tweet_simplify(tweet)
+        str = tweet_analyses(tweet)
         tweetsSearchDB.save(json.loads(str))
 
 
 #simplify the tweet json file
-def tweet_simplify(tweet):
+def tweet_analyses(tweet):
     try:
         json = import_simplejson()
         result = {}
