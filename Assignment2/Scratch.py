@@ -19,7 +19,7 @@ from tweepy.utils import import_simplejson
 AUS_GEO_CODE = [113.03, -39.06, 154.73, -12.28]
 USER_NAME = "assignment2"
 PASSWORD = "3010"
-HOST_NAME = "127.0.0.1"
+HOST_NAME = "115.146.86.192"
 
 
 try:
