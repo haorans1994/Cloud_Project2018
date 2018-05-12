@@ -26,15 +26,15 @@ except couchdb.ResourceNotFound:
     sys.exit()
 
 try:
-    tweetsSearchDB = client['tweets_search']
+    tweetsSearchDB = client['tweets_test']
 except couchdb.ResourceNotFound:
-    print("Cannot find the database1 ... Exiting\n")
+    print("Cannot find the database test ... Exiting\n")
     sys.exit()
 
 try:
     tweetsMaxId = client['tweets_id']
 except couchdb.ResourceNotFound:
-    print("Cannot find the database2 ... Exiting\n")
+    print("Cannot find the database id ... Exiting\n")
     sys.exit()
 
 
@@ -44,6 +44,7 @@ class TwitterGrabe(object):
         info = collect_info()
         self.auth = tweepy.OAuthHandler(info['consumer_key'], info['consumer_secret'])
         self.auth.set_access_token(info["access_token"], info["access_token_secret"])
+        """set the wait listener is true to fix the search request rate limit"""
         self.api = tweepy.API(self.auth,wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
     def run(self):
@@ -54,29 +55,33 @@ class TwitterGrabe(object):
         while loop:
             loop = False
             """use twitter stream api to get tweets"""
-            #myStream.filter(locations=AUS_GEO_CODE, async=True)
-            #print("Asyc task for stream API")
-            print(tweetsFromUser)
+            myStream.filter(locations=AUS_GEO_CODE, async=True)
+            print("Asyc task for stream API")
             """get data from search api"""
-            places = self.api.geo_search(query="AU", granularity="country")
-            placeId = places[0].id
-            doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
-            maxId = doc["max_id"]
-            print("Begin to get tweets through search API")
-            while True:
-                if maxId == 0:
-                    search = self.api.search(q="place:%s" % placeId, count=100)
-                else:
-                    search = self.api.search(q="place:%s" % placeId, count=100, max_id=maxId)
-                maxId = tweet_find_min_id(search)
-                status = self.api.rate_limit_status()
-                if status['resources']['search']['/search/tweets']['remaining'] == 0:
-                    print("wait for back ")
-                tweet_save(search)
-                doc["max_id"] = maxId
-                tweetsMaxId.save(doc)
+            search_tweets(self.api)
 
 
+
+def search_tweets(api):
+    """get data from search api"""
+    places = api.geo_search(query="AU", granularity="country")
+    placeId = places[0].id
+    doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
+    maxId = doc["max_id"]
+    print("Begin to get tweets through search API")
+    while True:
+        if maxId == 0:
+            search = api.search(q="place:%s" % placeId, count=100)
+        else:
+            search = api.search(q="place:%s" % placeId, count=100, max_id=maxId)
+        if maxId != tweet_find_min_id(search):
+            maxId = tweet_find_min_id(search)
+        status = api.rate_limit_status()
+        if status['resources']['search']['/search/tweets']['remaining'] == 0:
+            print("wait for back ")
+        tweet_save(search)
+        doc["max_id"] = maxId
+        tweetsMaxId.save(doc)
 
 
 class MyStreamListener(tweepy.StreamListener):
@@ -132,14 +137,6 @@ def tweet_analyses(tweet):
         result['in_reply_to_screen_name'] = tweet._json['in_reply_to_screen_name']
         result['coordinates'] = tweet._json['coordinates']
         result['place'] = tweet._json['place']
-        # if result['place']['place_type'] == 'neighbourhood':
-        #     result['postcode'] = generatePostcode.getPostCode_suburb(result['place']['name'])
-        # elif result['place']['place_type'] == 'city':
-        #     if result['coordinates']:
-        #         coordinates = [result['coordinates']['coordinates'][1], result['coordinates']['coordinates'][0]]
-        #         result['postcode'] = generatePostcode.getPostCode_coord(coordinates)
-        # else:
-        #     result['postcode'] = {}
         # user info
         result['user'] = tweet._json['user']
         str = json.dumps(result)

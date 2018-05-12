@@ -1,4 +1,3 @@
-import json
 import re
 from textblob import TextBlob
 import emoji

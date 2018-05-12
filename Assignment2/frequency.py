@@ -1,4 +1,3 @@
-from textblob import TextBlob
 import re
 import json
 import nltk
@@ -78,6 +77,8 @@ for item in freq:
 
 words = {"place": "Sydney", "freq": frequency}
 str = json.dumps(words)
+with open("sydney_frequency.json" "w") as outfile:
+    outfile.write(str)
 tweetsFrequencyDB.save(json.loads(str))
 
 
