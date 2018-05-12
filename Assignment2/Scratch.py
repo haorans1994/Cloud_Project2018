@@ -3,6 +3,8 @@ import tweepy
 import time
 import couchdb
 import traceback
+import liveSentiment
+
 from tweepy.utils import import_simplejson
 
 AUS_GEO_CODE = [113.03, -39.06, 154.73, -12.28]
@@ -26,8 +28,15 @@ except couchdb.ResourceNotFound:
 try:
     tweetsSearchDB = client['tweets_search']
 except couchdb.ResourceNotFound:
-    print("Cannot find the database ... Exiting\n")
+    print("Cannot find the database1 ... Exiting\n")
     sys.exit()
+
+try:
+    tweetsMaxId = client['tweets_id']
+except couchdb.ResourceNotFound:
+    print("Cannot find the database2 ... Exiting\n")
+    sys.exit()
+
 
 
 class TwitterGrabe(object):
@@ -43,18 +52,35 @@ class TwitterGrabe(object):
         loop = True
         """create a loop to continue grab data"""
         while loop:
+            loop = False
+            """use twitter stream api to get tweets"""
             myStream.filter(locations=AUS_GEO_CODE, async=True)
             print("Asyc task for stream API")
             """get data from search api"""
-            places = self.api.geo_search(query="AU", granularity="country")
-            placeId = places[0].id
-            i = 0
-#             while i < 20:
-#                 search = self.api.search(q="place:%s" % placeId, count=100)
-#                 tweet_save(search)
-#                 i=i+1
-            print("search function finish")
-            loop = False
+            search_tweets(self.api)
+
+
+
+def search_tweets(api):
+    """get data from search api"""
+    places = api.geo_search(query="AU", granularity="country")
+    placeId = places[0].id
+    doc = tweetsMaxId.get('6914db08a8487393f194483dfed76a34')
+    maxId = doc["max_id"]
+    print("Begin to get tweets through search API")
+    while True:
+        if maxId == 0:
+            search = api.search(q="place:%s" % placeId, count=100)
+        else:
+            search = api.search(q="place:%s" % placeId, count=100, max_id=maxId)
+        if maxId != tweet_find_min_id(search):
+            maxId = tweet_find_min_id(search)
+        status = api.rate_limit_status()
+        if status['resources']['search']['/search/tweets']['remaining'] == 0:
+            print("wait for back ")
+        tweet_save(search)
+        doc["max_id"] = maxId
+        tweetsMaxId.save(doc)
 
 
 class MyStreamListener(tweepy.StreamListener):
@@ -100,8 +126,9 @@ def tweet_simplify(tweet):
         json = import_simplejson()
         result = {}
         # status info
-        result['text'] = tweet._json['text']
         result['id_str'] = tweet._json['id_str']
+        result['text'] = tweet._json['text']
+        result['sentiment'] = liveSentiment.judge_sentiment(tweet._json['text'])
         result['created_at'] = tweet._json['created_at']
         result['source'] = tweet._json['source']
         result['in_reply_to_status_id_str'] = tweet._json['in_reply_to_status_id_str']
@@ -115,6 +142,18 @@ def tweet_simplify(tweet):
         return str
     except:
         traceback.print_exc()
+
+
+def tweet_find_min_id(search):
+    minId = 0
+    i = 0
+    for tweet in search:
+        if i == 0:
+            minId = tweet._json['id']
+        if tweet._json['id'] < minId:
+            minId = tweet._json['id']
+        i = i + 1
+    return minId
 
 
 x = TwitterGrabe()
