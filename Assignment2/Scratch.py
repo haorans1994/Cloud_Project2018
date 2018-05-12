@@ -63,10 +63,10 @@ class TwitterGrabe(object):
         while loop:
             loop = False
             """use twitter stream api to get tweets"""
-            myStream.filter(locations=AUS_GEO_CODE, async=True)
+            #myStream.filter(locations=AUS_GEO_CODE, async=True)
             print("Asyc task for stream API")
             """get data from search api"""
-            #search_tweets(self.api)
+            search_tweets(self.api)
 
 
 
