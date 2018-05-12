@@ -48,7 +48,7 @@ stopWords.append('AT')
 stopWords.append('URL')
 
 while True:
-    for tweet in tweetsSearchDB.view('tweets_search/sydney_tweets'):
+    for tweet in tweetsSearchDB.view('tweets_search/perth_tweets'):
         text = tweet.value[0].lower()
         text = re.sub(r'[@][\S]*\s', ' AT ', text)  # replace the @user with at
         text = re.sub(r'((www\.[^\s]+)|(https?://[^\s]+))', ' URL ', text)  # replace the web address with url
@@ -75,7 +75,7 @@ frequency = {}
 for item in freq:
     frequency[item[0]] = item[1]
 
-words = {"place": "Sydney", "freq": frequency}
+words = {"place": "Perth", "freq": frequency}
 str = json.dumps(words)
 with open("sydney_frequency.json" "w") as outfile:
     outfile.write(str)

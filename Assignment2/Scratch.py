@@ -26,15 +26,15 @@ except couchdb.ResourceNotFound:
     sys.exit()
 
 try:
-    tweetsSearchDB = client['tweets_test']
+    tweetsSearchDB = client['tweets_search']
 except couchdb.ResourceNotFound:
-    print("Cannot find the database test ... Exiting\n")
+    print("Cannot find the database1 ... Exiting\n")
     sys.exit()
 
 try:
     tweetsMaxId = client['tweets_id']
 except couchdb.ResourceNotFound:
-    print("Cannot find the database id ... Exiting\n")
+    print("Cannot find the database2 ... Exiting\n")
     sys.exit()
 
 
@@ -44,7 +44,6 @@ class TwitterGrabe(object):
         info = collect_info()
         self.auth = tweepy.OAuthHandler(info['consumer_key'], info['consumer_secret'])
         self.auth.set_access_token(info["access_token"], info["access_token_secret"])
-        """set the wait listener is true to fix the search request rate limit"""
         self.api = tweepy.API(self.auth,wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
     def run(self):
