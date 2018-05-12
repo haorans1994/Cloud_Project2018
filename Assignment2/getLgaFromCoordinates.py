@@ -1,3 +1,12 @@
+"""
+Team 7:
+Fei Teng 809370
+Haoran Sun 839693
+Niu Tong 811179
+Qingqian Yang 736563
+Yunpeng Shao 854611
+Function to calculate tweets' the LGA code by their coordinates
+"""
 from shapely.geometry import shape
 from shapely.geometry import Point
 # coords is a list of (x, y) tuples

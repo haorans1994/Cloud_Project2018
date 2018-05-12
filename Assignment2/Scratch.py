@@ -1,3 +1,12 @@
+"""
+Team 7:
+Fei Teng 809370
+Haoran Sun 839693
+Niu Tong 811179
+Qingqian Yang 736563
+Yunpeng Shao 854611
+Function to collect tweet from Twitter by using tweepy, use search API and stream API to collect tweets
+"""
 import sys
 import tweepy
 import time

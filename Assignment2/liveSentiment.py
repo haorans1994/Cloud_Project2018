@@ -1,3 +1,12 @@
+"""
+Team 7:
+Fei Teng 809370
+Haoran Sun 839693
+Niu Tong 811179
+Qingqian Yang 736563
+Yunpeng Shao 854611
+Function to assign the sentiment score for one tweet
+"""
 import re
 from textblob import TextBlob
 import emoji

@@ -1,3 +1,12 @@
+"""
+Team 7:
+Fei Teng 809370
+Haoran Sun 839693
+Niu Tong 811179
+Qingqian Yang 736563
+Yunpeng Shao 854611
+Function to save the safety rate from each city by using Aurin data
+"""
 import json
 
 def safety(fileName):
@@ -17,7 +26,7 @@ def safety(fileName):
 def outputJson():
 	with open('final_distress_perth.json', 'w') as f:
 		json.dump(safety(fileName), f)
-		print 'completed'
+		print ('completed')
 
 
 

@@ -1,3 +1,12 @@
+"""
+Team 7:
+Fei Teng 809370
+Haoran Sun 839693
+Niu Tong 811179
+Qingqian Yang 736563
+Yunpeng Shao 854611
+Function to count the high frequency word in the tweets' text from one map view and generate the words picture for visualization
+"""
 import matplotlib.pyplot as plt
 import jieba
 from PIL import Image

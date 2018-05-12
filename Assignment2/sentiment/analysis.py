@@ -1,5 +1,15 @@
+"""
+Team 7:
+Fei Teng 809370
+Haoran Sun 839693
+Niu Tong 811179
+Qingqian Yang 736563
+Yunpeng Shao 854611
+Function to allocate distress rate, safety rate and sitting rate to each LGA with its sentiment statistic data
+"""
 import json
 import os
+
 
 path=os.path.abspath('..')
 
