@@ -1,0 +1,159 @@
+{
+  "name": "AUS",
+  "label": {},
+  "itemStyle": {},
+  "children": [
+    {
+      "name": "Melbourne",
+      "collapsed": null,
+      "children": [
+        {
+          "name": "humidity",
+          "value": 3943,
+          "collapsed": null
+        },
+        {
+          "name": "wind",
+          "value": 3928,
+          "collapsed": null
+        },
+        {
+          "name": "temperature",
+          "value": 3717,
+          "collapsed": null
+        },
+        {
+          "name": "rain",
+          "value": 3605,
+          "collapsed": null
+        },
+        {
+          "name": "drinking",
+          "value": 1016,
+          "collapsed": null
+        },
+        {
+          "name": "victraffic",
+          "value": 1001,
+          "collapsed": null
+        },
+        {
+          "name": "traffic",
+          "value": 814,
+          "collapsed": null
+        },
+        {
+          "name": "thanks",
+          "value": 792,
+          "collapsed": null
+        },
+        {
+          "name": "beautiful",
+          "value": 745,
+          "collapsed": null
+        }
+      ]
+    },
+    {
+      "name": "Sydney",
+      "collapsed": null,
+      "children": [
+        {
+          "name": "beach",
+          "value": 1972,
+          "collapsed": null
+        },
+        {
+          "name": "drinking",
+          "value": 1942,
+          "collapsed": null
+        },
+        {
+          "name": "time",
+          "value": 1816,
+          "collapsed": null
+        },
+        {
+          "name": "job",
+          "value": 1332,
+          "collapsed": null
+        },
+        {
+          "name": "work",
+          "value": 1034,
+          "collapsed": null
+        },
+        {
+          "name": "harbour",
+          "value": 960,
+          "collapsed": null
+        },
+        {
+          "name": "weekend",
+          "value": 879,
+          "collapsed": null
+        },
+        {
+          "name": "amazing",
+          "value": 816,
+          "collapsed": null
+        }
+      ]
+    },
+    {
+      "name": "Perth",
+      "collapsed": null,
+      "children": [
+        {
+          "name": "humidity",
+          "value": 475,
+          "label": {},
+          "itemStyle": {},
+          "collapsed": null
+        },
+        {
+          "name": "wind",
+          "value": 459,
+          "label": {},
+          "itemStyle": {},
+          "collapsed": null
+        },
+        {
+          "name": "sunset",
+          "value": 300,
+          "label": {},
+          "itemStyle": {},
+          "collapsed": null
+        },
+        {
+          "name": "beach",
+          "value": 282,
+          "label": {},
+          "itemStyle": {},
+          "collapsed": null
+        },
+        {
+          "name": "sky",
+          "value": 276,
+          "label": {},
+          "itemStyle": {},
+          "collapsed": null
+        },
+        {
+          "name": "love",
+          "value": 235,
+          "label": {},
+          "itemStyle": {},
+          "collapsed": null
+        },
+        {
+          "name": "park",
+          "value": 233,
+          "label": {},
+          "itemStyle": {},
+          "collapsed": null
+        }
+      ]
+    }
+  ]
+}
